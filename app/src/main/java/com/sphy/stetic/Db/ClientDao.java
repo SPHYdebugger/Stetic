@@ -15,8 +15,8 @@ public interface ClientDao {
     @Query("SELECT * FROM Client")
     List<Client> getAll();
 
-    @Query("SELECT * FROM Client WHERE firstName = :name")
-    List<Client> findByName(String name);
+    @Query("SELECT * FROM Client WHERE dni = :dni")
+    Client findByDni(String dni);
 
     @Insert
     void insert(Client client);
