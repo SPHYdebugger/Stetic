@@ -1,5 +1,7 @@
 package com.sphy.stetic.Adapter;
 
+import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
+
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,7 +90,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.TaskHolder
             int currentPosition = getAdapterPosition();
             Client client = clients.get(currentPosition);
 
-            AppDatabase db = Room.databaseBuilder(itemView.getContext(), AppDatabase.class, "tasks").allowMainThreadQueries().build();
+            AppDatabase db = Room.databaseBuilder(itemView.getContext(), AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
             db.clientDao().delete(client);
 
             clients.remove(currentPosition);

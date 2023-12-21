@@ -26,4 +26,7 @@ public interface ClientDao {
 
     @Delete
     void delete(Client client);
+
+    @Query("DELETE FROM Client WHERE dni = :dni")
+    void deleteByDni(String dni);
 }
