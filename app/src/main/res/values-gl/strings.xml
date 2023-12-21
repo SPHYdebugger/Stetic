@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SteticApp</string>
-    <string name="name">Nombre</string>
-    <string name="lastname">Apellido</string>
+    <string name="name">Nome</string>
+    <string name="lastname">Apelido</string>
     <string name="dni">DNI</string>
-    <string name="address">Dirección</string>
-    <string name="city">Ciudad</string>
-    <string name="birthday">Fecha cumpleaños</string>
+    <string name="address">Enderezo</string>
+    <string name="city">Cidade</string>
+    <string name="birthday">Data de cumpreanos</string>
     <string name="vip">VIP</string>
     <string name="create">Crear</string>
     <string name="delete">Borrar</string>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SteticApp</string>
+    <string name="name">Name</string>
+    <string name="lastname">Lastname</string>
+    <string name="dni">NIE</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="birthday">Birthday Date</string>
+    <string name="vip">VIP</string>
+    <string name="create">Create</string>
+    <string name="delete">Delete</string>
+    <string name="details">Details</string>
+
+    <string name="client_insert">Cliente insertado en la base de datos</string>
+</resources>
