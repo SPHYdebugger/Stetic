@@ -4,8 +4,11 @@ import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +34,7 @@ public class ClientListActivity extends AppCompatActivity {
 
         clients = new ArrayList<>();
 
-        AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, "tasks").allowMainThreadQueries().build();
+        AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
         clients.addAll(db.clientDao().getAll());
 
         RecyclerView recyclerView = findViewById(R.id.client_list);
@@ -57,4 +60,22 @@ public class ClientListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RegisterClientActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_bar, menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.searchClient){
+            Intent intent = new Intent(ClientListActivity.this, SearchClientActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

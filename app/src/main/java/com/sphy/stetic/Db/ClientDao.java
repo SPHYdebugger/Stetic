@@ -15,8 +15,8 @@ public interface ClientDao {
     @Query("SELECT * FROM Client")
     List<Client> getAll();
 
-    @Query("SELECT * FROM Client WHERE firstName = :name")
-    List<Client> findByName(String name);
+    @Query("SELECT * FROM Client WHERE dni = :dni")
+    Client findByDni(String dni);
 
     @Insert
     void insert(Client client);
@@ -26,4 +26,7 @@ public interface ClientDao {
 
     @Delete
     void delete(Client client);
+
+    @Query("DELETE FROM Client WHERE dni = :dni")
+    void deleteByDni(String dni);
 }
