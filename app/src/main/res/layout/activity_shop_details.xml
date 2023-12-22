@@ -17,7 +17,7 @@
                 android:id="@+id/detail_name_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:text="@string/name"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -39,7 +39,7 @@
                 android:id="@+id/detail_address_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Address"
+                android:text="@string/address"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -61,7 +61,7 @@
                 android:id="@+id/detail_city_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="City"
+                android:text="@string/city"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -84,7 +84,7 @@
                 android:id="@+id/detail_solarium_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="VIP"
+                android:text="Solarium"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -101,6 +101,14 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:background="#000000" />
+
+
+                <com.mapbox.maps.MapView
+                    android:id="@+id/mapViewShopDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"/>
+
+
 
             <!-- Botones -->
             <LinearLayout

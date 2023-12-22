@@ -20,13 +20,20 @@ public class Shop {
     @ColumnInfo
     private boolean solarium;
 
+    @ColumnInfo
+    private double latitude;
+    @ColumnInfo
+    private double longitude;
+
     public Shop(){}
 
-    public Shop(@NonNull String name, String address, String city, boolean solarium) {
+    public Shop(@NonNull String name, String address, String city, boolean solarium, double latitude, double longitude) {
         this.name = name;
         this.address = address;
         this.city = city;
         this.solarium = solarium;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     @NonNull
@@ -60,5 +67,21 @@ public class Shop {
 
     public void setSolarium(boolean solarium) {
         this.solarium = solarium;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }
