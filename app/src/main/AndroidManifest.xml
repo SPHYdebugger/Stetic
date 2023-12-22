@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -23,28 +26,43 @@
         </activity>
 
         <activity
-            android:name=".Activity.RegisterClientActivity"
+            android:name=".Activity.Clients.RegisterClientActivity"
             android:exported="false" >
 
         </activity>
 
         <activity
-            android:name=".Activity.ClientDetailsActivity"
+            android:name=".Activity.Clients.ClientDetailsActivity"
             android:exported="false" >
 
         </activity>
         <activity
-            android:name=".Activity.ClientListActivity"
+            android:name=".Activity.Clients.ClientListActivity"
             android:exported="false" >
 
         </activity>
         <activity
-            android:name=".Activity.SearchClientActivity"
+            android:name=".Activity.Clients.SearchClientActivity"
             android:exported="false" >
 
         </activity>
         <activity
-            android:name=".Activity.ClientEditActivity"
+            android:name=".Activity.Clients.ClientEditActivity"
+            android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".Activity.Shops.RegisterShopActivity"
+            android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".Activity.Shops.ShopDetailsActivity"
+            android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".Activity.Shops.ShopListActivity"
             android:exported="false" >
 
         </activity>

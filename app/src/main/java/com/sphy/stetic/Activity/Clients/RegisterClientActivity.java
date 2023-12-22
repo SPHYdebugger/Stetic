@@ -1,4 +1,4 @@
-package com.sphy.stetic.Activity;
+package com.sphy.stetic.Activity.Clients;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 

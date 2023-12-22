@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/edit_firstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="First Name" />
+
+    <EditText
+        android:id="@+id/edit_lastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_firstName"
+        android:layout_marginTop="8dp"
+        android:hint="Last Name" />
+
+    <EditText
+        android:id="@+id/edit_dni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_lastName"
+        android:layout_marginTop="8dp"
+        android:hint="DNI" />
+
+    <EditText
+        android:id="@+id/edit_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_dni"
+        android:layout_marginTop="8dp"
+        android:hint="Address" />
+
+    <EditText
+        android:id="@+id/edit_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_address"
+        android:layout_marginTop="8dp"
+        android:hint="City" />
+
+    <EditText
+        android:id="@+id/edit_birthday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_city"
+        android:layout_marginTop="8dp"
+        android:hint="Birthday" />
+
+    <EditText
+        android:id="@+id/edit_vip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_birthday"
+        android:layout_marginTop="8dp"
+        android:hint="VIP" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_vip"
+        android:layout_marginTop="16dp"
+        android:text="@string/cancel" />
+
+    <Button
+        android:id="@+id/btnModify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCancel"
+        android:layout_marginTop="8dp"
+        android:text="@string/modify" />
+
+</RelativeLayout>

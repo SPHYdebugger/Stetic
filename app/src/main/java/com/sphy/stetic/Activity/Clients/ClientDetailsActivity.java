@@ -1,4 +1,4 @@
-package com.sphy.stetic.Activity;
+package com.sphy.stetic.Activity.Clients;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -81,13 +80,13 @@ public class ClientDetailsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.editClient){
+        if (item.getItemId() == R.id.edit){
             Intent intent = new Intent(ClientDetailsActivity.this, ClientEditActivity.class);
             intent.putExtra("dni", getIntent().getStringExtra("dni"));
             startActivity(intent);
             return true;
         }
-         if (item.getItemId() == R.id.deleteClient) {
+         if (item.getItemId() == R.id.delete) {
          Intent intent = getIntent();
          String clientDni = intent.getStringExtra("dni");
         AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();

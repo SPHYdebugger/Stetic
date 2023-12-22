@@ -14,47 +14,49 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.sphy.stetic.Activity.Clients.ClientDetailsActivity;
+import com.sphy.stetic.Activity.Shops.ShopDetailsActivity;
 import com.sphy.stetic.Db.AppDatabase;
-import com.sphy.stetic.R;
 import com.sphy.stetic.Domain.Client;
+import com.sphy.stetic.Domain.Shop;
+import com.sphy.stetic.R;
 
 import java.util.List;
 
-public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.TaskHolder> {
+public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.TaskHolder> {
 
-    private List<Client> clients;
+    private List<Shop> shops;
 
 
-    public ClientAdapter(List<Client> clients) {
-        this.clients = clients;
+    public ShopAdapter(List<Shop> shops) {
+        this.shops = shops;
     }
 
     @NonNull
     @Override
     public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.client_list_item, parent, false);
+                .inflate(R.layout.shop_list_item, parent, false);
         return new TaskHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
-        holder.tvName.setText(clients.get(position).getFirstName());
-        holder.tvLastname.setText(clients.get(position).getLastName());
-        holder.tvDni.setText(clients.get(position).getDni());
+        holder.tvName.setText(shops.get(position).getName());
+        holder.tvAddress.setText(shops.get(position).getAddress());
+        holder.tvCity.setText(shops.get(position).getCity());
 
     }
 
     @Override
     public int getItemCount() {
-        return clients.size();
+        return shops.size();
     }
 
     public class TaskHolder extends RecyclerView.ViewHolder {
 
         public TextView tvName;
-        public TextView tvLastname;
-        public TextView tvDni;
+        public TextView tvAddress;
+        public TextView tvCity;
         public Button deleteButton;
         public Button detailsButton;
         public View parentView;
@@ -63,39 +65,39 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.TaskHolder
             super(view);
             parentView = view;
 
-            tvName = view.findViewById(R.id.client_item_name);
-            tvLastname = view.findViewById(R.id.client_item_lastname);
-            tvDni = view.findViewById(R.id.client_item_dni);
+            tvName = view.findViewById(R.id.shop_item_name);
+            tvAddress = view.findViewById(R.id.shop_item_address);
+            tvCity = view.findViewById(R.id.shop_item_city);
             deleteButton = view.findViewById(R.id.delete_item_button);
             detailsButton = view.findViewById(R.id.details_item_button);
 
 
-            detailsButton.setOnClickListener(v -> goClientDetails(view));
-            deleteButton.setOnClickListener(v -> deleteClient(view));
+            detailsButton.setOnClickListener(v -> goShopDetails(view));
+            deleteButton.setOnClickListener(v -> deleteShop(view));
 
 
         }
 
 
-        private void goClientDetails(View itemView) {
-        Intent intent = new Intent(itemView.getContext(), ClientDetailsActivity.class);
-        Client client = clients.get(getAdapterPosition());
-        intent.putExtra("dni", client.getDni());
+        private void goShopDetails(View itemView) {
+        Intent intent = new Intent(itemView.getContext(), ShopDetailsActivity.class);
+        Shop shop = shops.get(getAdapterPosition());
+        intent.putExtra("name", shop.getName());
         itemView.getContext().startActivity(intent);
         }
 
 
 
-        private void deleteClient(View itemView) {
+        private void deleteShop(View itemView) {
             int currentPosition = getAdapterPosition();
-            Client client = clients.get(currentPosition);
+            Shop shop = shops.get(currentPosition);
 
             AppDatabase db = Room.databaseBuilder(itemView.getContext(), AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
-            db.clientDao().delete(client);
+            db.shopDao().delete(shop);
 
-            clients.remove(currentPosition);
+            shops.remove(currentPosition);
             notifyItemRemoved(currentPosition);
-            notifyItemRangeChanged(currentPosition, clients.size());
+            notifyItemRangeChanged(currentPosition, shops.size());
         }
     }
 }

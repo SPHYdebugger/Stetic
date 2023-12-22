@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Clients.ClientListActivity">
+    tools:context=".Activity.Shops.ShopListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/client_list"
+        android:id="@+id/shop_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="20dp"
@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="1dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_client_button"
+        android:id="@+id/add_shop_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"

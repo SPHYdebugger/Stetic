@@ -39,4 +39,6 @@ dependencies {
     implementation("androidx.room:room-runtime:2.4.3")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     annotationProcessor("androidx.room:room-compiler:2.4.3")
+    implementation("com.mapbox.maps:android:10.16.1")
+
 }
