@@ -82,7 +82,8 @@ public class ClientDetailsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.editClient){
-            Intent intent = new Intent(ClientDetailsActivity.this, ClientListActivity.class);
+            Intent intent = new Intent(ClientDetailsActivity.this, ClientEditActivity.class);
+            intent.putExtra("dni", getIntent().getStringExtra("dni"));
             startActivity(intent);
             return true;
         }

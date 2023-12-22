@@ -38,6 +38,17 @@
             android:exported="false" >
 
         </activity>
+        <activity
+            android:name=".Activity.SearchClientActivity"
+            android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".Activity.ClientEditActivity"
+            android:exported="false" >
+
+        </activity>
+
 
     </application>
 
