@@ -1,4 +1,4 @@
-package com.sphy.stetic.Activity.Shops;
+package com.sphy.stetic.view.Shops;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import com.mapbox.geojson.Point;
 import com.mapbox.maps.CameraOptions;
 import com.mapbox.maps.MapView;
 import com.mapbox.maps.Style;
@@ -25,10 +24,7 @@ import com.mapbox.maps.plugin.annotation.AnnotationPluginImplKt;
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManager;
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManagerKt;
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions;
-import com.sphy.stetic.Activity.Clients.ClientEditActivity;
-import com.sphy.stetic.Activity.Clients.ClientListActivity;
 import com.sphy.stetic.Db.AppDatabase;
-import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.Domain.Shop;
 import com.sphy.stetic.R;
 

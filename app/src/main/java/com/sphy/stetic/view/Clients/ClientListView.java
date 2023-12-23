@@ -1,4 +1,4 @@
-package com.sphy.stetic.Activity.Clients;
+package com.sphy.stetic.view.Clients;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,25 +19,27 @@ import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.R;
 import com.sphy.stetic.Adapter.ClientAdapter;
 import com.sphy.stetic.Db.AppDatabase;
+import com.sphy.stetic.contract.ClientListContract;
+import com.sphy.stetic.presenter.ClientListPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientListActivity extends AppCompatActivity {
+public class ClientListView extends AppCompatActivity implements ClientListContract.View {
 
     private List<Client> clients;
     private ClientAdapter adapter;
+    private ClientListPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_list);
 
+        presenter = new ClientListPresenter(this);
+
+
         clients = new ArrayList<>();
-
-        AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
-        clients.addAll(db.clientDao().getAll());
-
         RecyclerView recyclerView = findViewById(R.id.client_list);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -49,15 +52,13 @@ public class ClientListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        clients.clear();
-        AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
-        clients.addAll(db.clientDao().getAll());
+        presenter.loadAllClients();
 
-        adapter.notifyDataSetChanged();
+
     }
 
     public void addTask(View view) {
-        Intent intent = new Intent(this, RegisterClientActivity.class);
+        Intent intent = new Intent(this, RegisterClientView.class);
         startActivity(intent);
     }
 
@@ -71,11 +72,22 @@ public class ClientListActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.search){
-            Intent intent = new Intent(ClientListActivity.this, SearchClientActivity.class);
+            Intent intent = new Intent(ClientListView.this, SearchClientView.class);
             startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void listClients(List<Client> clients) {
+        this.clients.clear();
+        this.clients.addAll(clients);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }

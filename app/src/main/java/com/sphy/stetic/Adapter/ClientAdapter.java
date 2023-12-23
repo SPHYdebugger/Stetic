@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import com.sphy.stetic.Activity.Clients.ClientDetailsActivity;
+import com.sphy.stetic.view.Clients.ClientDetailsView;
 import com.sphy.stetic.Db.AppDatabase;
 import com.sphy.stetic.R;
 import com.sphy.stetic.Domain.Client;
@@ -78,7 +78,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.TaskHolder
 
 
         private void goClientDetails(View itemView) {
-        Intent intent = new Intent(itemView.getContext(), ClientDetailsActivity.class);
+        Intent intent = new Intent(itemView.getContext(), ClientDetailsView.class);
         Client client = clients.get(getAdapterPosition());
         intent.putExtra("dni", client.getDni());
         itemView.getContext().startActivity(intent);

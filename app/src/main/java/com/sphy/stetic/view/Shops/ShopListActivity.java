@@ -1,4 +1,4 @@
-package com.sphy.stetic.Activity.Shops;
+package com.sphy.stetic.view.Shops;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
@@ -14,12 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import com.sphy.stetic.Activity.Clients.RegisterClientActivity;
-import com.sphy.stetic.Activity.Clients.SearchClientActivity;
-import com.sphy.stetic.Adapter.ClientAdapter;
 import com.sphy.stetic.Adapter.ShopAdapter;
 import com.sphy.stetic.Db.AppDatabase;
-import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.Domain.Shop;
 import com.sphy.stetic.R;
 
