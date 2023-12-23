@@ -8,7 +8,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,59 +20,88 @@ import androidx.room.Room;
 import com.sphy.stetic.Db.AppDatabase;
 import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.R;
+import com.sphy.stetic.contract.ClientDetailsContract;
+import com.sphy.stetic.presenter.ClientDetailsPresenter;
 
-public class ClientDetailsView extends AppCompatActivity {
+public class ClientDetailsView extends AppCompatActivity implements ClientDetailsContract.View {
+
+    private TextView tvFirstName;
+    private TextView tvLastName;
+    private TextView tvDni;
+    private TextView tvAddress;
+    private TextView tvCity;
+    private TextView tvBirthday;
+    private TextView tvVip;
+    private boolean isVip;
+
+
+
+    private ClientDetailsContract.Presenter presenter;
+    private String clientDni;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_details);
 
-        Intent intent = getIntent();
-        String clientDni = intent.getStringExtra("dni");
-        AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
-        Client client = db.clientDao().findByDni(clientDni);
-        loadClient(client);
+        tvFirstName = findViewById(R.id.detail_firstName);
+        tvLastName = findViewById(R.id.detail_lastName);
+        tvDni = findViewById(R.id.detail_dni);
+        tvAddress = findViewById(R.id.detail_address);
+        tvCity = findViewById(R.id.detail_city);
+        tvBirthday = findViewById(R.id.detail_birthday);
+        tvVip = findViewById(R.id.detail_vip);
 
-        Button backButton = findViewById(R.id.btnBack);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ClientDetailsView.this, ClientListView.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
+        presenter = new ClientDetailsPresenter(this);
+
+        Intent intent = getIntent();
+        clientDni = intent.getStringExtra("dni");
+        presenter.getClientDetails(clientDni);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = getIntent();
+        clientDni = intent.getStringExtra("dni");
+        presenter.getClientDetails(clientDni);
+    }
+
+    @Override
+    public void displayClientDetails(Client client) {
+        tvFirstName.setText(client.getFirstName());
+        tvLastName.setText(client.getLastName());
+        tvDni.setText(client.getDni());
+        tvAddress.setText(client.getAddress());
+        tvCity.setText(client.getCity());
+        tvBirthday.setText(client.getBirthDay());
+        isVip = client.isVip();
+        tvVip.setText(isVip ? "Sí" : "No");
 
     }
 
-    private void loadClient(Client client) {
+    @Override
+    public void showUpdateSuccessMessage() {
+        Toast.makeText(this, "Cliente actualizado correctamente", Toast.LENGTH_LONG).show();
+    }
 
-        String firstName = client.getFirstName();
-        String lastName = client.getLastName();
-        String dni = client.getDni();
-        String address = client.getAddress();
-        String city = client.getCity();
-        String birthday = client.getBirthDay();
-        boolean isVip = client.isVip();
+    @Override
+    public void showUpdateErrorMessage() {
+        Toast.makeText(this, "Error al actualizar el cliente", Toast.LENGTH_LONG).show();
+    }
 
+    @Override
+    public void showDeleteSuccessMessage() {
+        Toast.makeText(this, "Cliente eliminado correctamente", Toast.LENGTH_LONG).show();
+        finish(); // Cerrar la actividad después de eliminar el cliente
+    }
 
-        TextView tvFirstName = findViewById(R.id.detail_firstName);
-        TextView tvLastName = findViewById(R.id.detail_lastName);
-        TextView tvDni = findViewById(R.id.detail_dni);
-        TextView tvAddress = findViewById(R.id.detail_address);
-        TextView tvCity = findViewById(R.id.detail_city);
-        TextView tvBirthday = findViewById(R.id.detail_birthday);
-        TextView tvVip = findViewById(R.id.detail_vip);
-
-
-        tvFirstName.setText(firstName);
-        tvLastName.setText(lastName);
-        tvDni.setText(dni);
-        tvAddress.setText(address);
-        tvCity.setText(city);
-        tvBirthday.setText(birthday);
-        tvVip.setText(isVip ? "Sí" : "No");
+    @Override
+    public void showDeleteErrorMessage() {
+        Toast.makeText(this, "Error al eliminar el cliente", Toast.LENGTH_LONG).show();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,18 +114,16 @@ public class ClientDetailsView extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.edit){
             Intent intent = new Intent(ClientDetailsView.this, ClientEditView.class);
-            intent.putExtra("dni", getIntent().getStringExtra("dni"));
+            intent.putExtra("dni", clientDni);
             startActivity(intent);
+
             return true;
         }
-         if (item.getItemId() == R.id.delete) {
-         Intent intent = getIntent();
-         String clientDni = intent.getStringExtra("dni");
-        AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
-        db.clientDao().deleteByDni(clientDni);
-        finish();
-        return true;
-    }
+        if (item.getItemId() == R.id.delete) {
+            presenter.deleteClient(clientDni);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
+
 }

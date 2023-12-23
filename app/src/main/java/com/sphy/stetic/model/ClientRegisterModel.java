@@ -24,5 +24,6 @@ public class ClientRegisterModel implements ClientRegisterContract.Model {
     public void insertClient(Client client, OnClientInsertedListener listener) {
         AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
         db.clientDao().insert(client);
+        listener.onClientInsertedSuccess();
     }
 }
