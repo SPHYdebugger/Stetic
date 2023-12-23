@@ -1,4 +1,4 @@
-package com.sphy.stetic.Activity.Clients;
+package com.sphy.stetic.view.Clients;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
@@ -21,7 +21,7 @@ import com.sphy.stetic.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchClientActivity extends AppCompatActivity {
+public class SearchClientView extends AppCompatActivity {
 
     private List<Client> allClients;
     private List<Client> searchResults;

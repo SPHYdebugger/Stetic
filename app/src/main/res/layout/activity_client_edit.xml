@@ -1,77 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="20dp"
+    tools:context=".view.Clients.ClientEditView">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <EditText
+            android:id="@+id/edit_firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="First Name" />
 
-    <EditText
-        android:id="@+id/edit_firstName"
+        <EditText
+            android:id="@+id/edit_lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_firstName"
+            android:layout_marginTop="8dp"
+            android:hint="Last Name" />
+
+        <EditText
+            android:id="@+id/edit_dni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_lastName"
+            android:layout_marginTop="8dp"
+            android:hint="DNI" />
+
+        <EditText
+            android:id="@+id/edit_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_dni"
+            android:layout_marginTop="8dp"
+            android:hint="Address" />
+
+        <EditText
+            android:id="@+id/edit_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_address"
+            android:layout_marginTop="8dp"
+            android:hint="City" />
+
+        <EditText
+            android:id="@+id/edit_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_city"
+            android:layout_marginTop="8dp"
+            android:hint="Birthday" />
+
+        <CheckBox
+            android:id="@+id/client_vip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vip" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="First Name" />
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp">
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-    <EditText
-        android:id="@+id/edit_lastName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit_firstName"
-        android:layout_marginTop="8dp"
-        android:hint="Last Name" />
+            android:layout_marginTop="16dp"
+            android:text="@string/cancel" />
 
-    <EditText
-        android:id="@+id/edit_dni"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit_lastName"
-        android:layout_marginTop="8dp"
-        android:hint="DNI" />
+        <Button
+            android:id="@+id/btnModify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="modifyClient"
+            android:text="@string/modify_client" />
 
-    <EditText
-        android:id="@+id/edit_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit_dni"
-        android:layout_marginTop="8dp"
-        android:hint="Address" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/edit_city"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit_address"
-        android:layout_marginTop="8dp"
-        android:hint="City" />
-
-    <EditText
-        android:id="@+id/edit_birthday"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit_city"
-        android:layout_marginTop="8dp"
-        android:hint="Birthday" />
-
-    <EditText
-        android:id="@+id/edit_vip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit_birthday"
-        android:layout_marginTop="8dp"
-        android:hint="VIP" />
-
-    <Button
-        android:id="@+id/btnCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit_vip"
-        android:layout_marginTop="16dp"
-        android:text="@string/cancel" />
-
-    <Button
-        android:id="@+id/btnModify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnCancel"
-        android:layout_marginTop="8dp"
-        android:text="@string/modify" />
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
