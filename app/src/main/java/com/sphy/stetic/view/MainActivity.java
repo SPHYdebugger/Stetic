@@ -1,4 +1,4 @@
-package com.sphy.stetic.Activity;
+package com.sphy.stetic.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.sphy.stetic.Activity.Clients.ClientListActivity;
-import com.sphy.stetic.Activity.Shops.ShopListActivity;
+import com.sphy.stetic.view.Clients.ClientListView;
+import com.sphy.stetic.view.Shops.ShopListActivity;
 import com.sphy.stetic.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.goClients){
-                Intent intent = new Intent(MainActivity.this, ClientListActivity.class);
+                Intent intent = new Intent(MainActivity.this, ClientListView.class);
                 startActivity(intent);
                 return true;
         }

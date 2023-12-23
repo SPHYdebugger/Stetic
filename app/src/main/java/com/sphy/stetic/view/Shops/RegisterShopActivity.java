@@ -1,9 +1,8 @@
-package com.sphy.stetic.Activity.Shops;
+package com.sphy.stetic.view.Shops;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
 import android.graphics.BitmapFactory;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;

@@ -1,4 +1,4 @@
-package com.sphy.stetic.Activity.Clients;
+package com.sphy.stetic.view.Clients;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
@@ -15,7 +15,7 @@ import com.sphy.stetic.Db.AppDatabase;
 import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.R;
 
-public class ClientEditActivity extends AppCompatActivity {
+public class ClientEditView extends AppCompatActivity {
 
     private Client client;
 
@@ -44,7 +44,7 @@ public class ClientEditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 modifyClient();
-                Intent intent = new Intent(ClientEditActivity.this, ClientListActivity.class);
+                Intent intent = new Intent(ClientEditView.this, ClientListView.class);
                 startActivity(intent);
             }
         });

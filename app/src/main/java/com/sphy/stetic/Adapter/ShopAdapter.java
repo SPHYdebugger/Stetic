@@ -13,10 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import com.sphy.stetic.Activity.Clients.ClientDetailsActivity;
-import com.sphy.stetic.Activity.Shops.ShopDetailsActivity;
+import com.sphy.stetic.view.Shops.ShopDetailsActivity;
 import com.sphy.stetic.Db.AppDatabase;
-import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.Domain.Shop;
 import com.sphy.stetic.R;
 

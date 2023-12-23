@@ -1,4 +1,4 @@
-package com.sphy.stetic.Activity.Clients;
+package com.sphy.stetic.view.Clients;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
@@ -18,7 +18,7 @@ import com.sphy.stetic.Db.AppDatabase;
 import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.R;
 
-public class ClientDetailsActivity extends AppCompatActivity {
+public class ClientDetailsView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class ClientDetailsActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ClientDetailsActivity.this, ClientListActivity.class);
+                Intent intent = new Intent(ClientDetailsView.this, ClientListView.class);
                 startActivity(intent);
                 finish();
             }
@@ -81,7 +81,7 @@ public class ClientDetailsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.edit){
-            Intent intent = new Intent(ClientDetailsActivity.this, ClientEditActivity.class);
+            Intent intent = new Intent(ClientDetailsView.this, ClientEditView.class);
             intent.putExtra("dni", getIntent().getStringExtra("dni"));
             startActivity(intent);
             return true;
