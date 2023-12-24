@@ -12,9 +12,5 @@
     <string name="delete">Delete</string>
     <string name="details">Details</string>
 
-    <string name="client_insert">Client inserted in database</string>
-    <string name="cancel">Cancel</string>
-    <string name="modify">Modify</string>
-    <string name="shop_insert">Shop inserted in database</string>
-    <string name="modify_client">Modify Client</string>
+    <string name="client_insert">Cliente insertado en la base de datos</string>
 </resources>

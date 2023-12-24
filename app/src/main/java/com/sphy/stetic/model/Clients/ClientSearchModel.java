@@ -1,8 +1,8 @@
-package com.sphy.stetic.model;
+package com.sphy.stetic.model.Clients;
 
 import com.sphy.stetic.Db.AppDatabase;
 import com.sphy.stetic.Domain.Client;
-import com.sphy.stetic.contract.ClientSearchContract;
+import com.sphy.stetic.contract.Clients.ClientSearchContract;
 
 import java.util.List;
 

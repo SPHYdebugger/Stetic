@@ -3,6 +3,7 @@ package com.sphy.stetic.view.Clients;
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,24 +21,26 @@ import com.sphy.stetic.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sphy.stetic.contract.ClientSearchContract;
-import com.sphy.stetic.model.ClientSearchModel;
-import com.sphy.stetic.presenter.ClientSearchPresenter;
+public class SearchClientView extends AppCompatActivity {
 
-public class ClientSearchView extends AppCompatActivity implements ClientSearchContract.View {
+    private List<Client> allClients;
     private List<Client> searchResults;
     private ClientAdapter adapter;
     private EditText searchEditText;
     private Button searchButton;
-    private ClientSearchContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_client);
 
+
+        allClients = new ArrayList<>();
         searchResults = new ArrayList<>();
-        presenter = new ClientSearchPresenter(this, new ClientSearchModel(Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build()));
+
+        AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
+        allClients.addAll(db.clientDao().getAll());
+        Log.d("SearchClientActivity", "Total clients: " + allClients.size());
 
         RecyclerView recyclerView = findViewById(R.id.search_results_list);
         recyclerView.setHasFixedSize(true);
@@ -49,18 +52,28 @@ public class ClientSearchView extends AppCompatActivity implements ClientSearchC
         searchEditText = findViewById(R.id.search_edit_text);
         searchButton = findViewById(R.id.search_button);
 
+
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.performSearch(searchEditText.getText().toString().trim());
+                performSearch();
             }
         });
     }
 
-    @Override
-    public void showSearchResults(List<Client> searchResults) {
-        this.searchResults.clear();
-        this.searchResults.addAll(searchResults);
+    private void performSearch() {
+        String searchText = searchEditText.getText().toString().trim().toLowerCase();
+        searchResults.clear();
+
+        for (Client client : allClients) {
+            if (client.getFirstName().toLowerCase().contains(searchText) ||
+                    client.getLastName().toLowerCase().contains(searchText) ||
+                    client.getCity().toLowerCase().contains(searchText)) {
+                searchResults.add(client);
+            }
+        }
+
         adapter.notifyDataSetChanged();
     }
 }
+

@@ -1,14 +1,14 @@
-package com.sphy.stetic.presenter;
+package com.sphy.stetic.presenter.Products;
 
 import com.sphy.stetic.Domain.Client;
-import com.sphy.stetic.contract.ClientEditContract;
-import com.sphy.stetic.model.ClientEditModel;
+import com.sphy.stetic.contract.Clients.ClientEditContract;
+import com.sphy.stetic.model.Clients.ClientEditModel;
 
-public class ClientEditPresenter implements ClientEditContract.Presenter {
+public class ProductEditPresenter implements ClientEditContract.Presenter {
     private ClientEditContract.View view;
     private ClientEditContract.Model model;
 
-    public ClientEditPresenter(ClientEditContract.View view) {
+    public ProductEditPresenter(ClientEditContract.View view) {
         this.view = view;
         this.model = new ClientEditModel();
     }
@@ -23,7 +23,7 @@ public class ClientEditPresenter implements ClientEditContract.Presenter {
 
             @Override
             public void onUpdateClientError(String message) {
-                // Manejar el error, por ejemplo, mostrar un mensaje de error en la vista
+
             }
         });
     }

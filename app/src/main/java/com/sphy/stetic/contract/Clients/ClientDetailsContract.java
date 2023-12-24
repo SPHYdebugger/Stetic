@@ -1,4 +1,4 @@
-package com.sphy.stetic.contract;
+package com.sphy.stetic.contract.Clients;
 
 import com.sphy.stetic.Domain.Client;
 

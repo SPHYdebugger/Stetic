@@ -1,8 +1,8 @@
-package com.sphy.stetic.presenter;
+package com.sphy.stetic.presenter.Clients;
 
 import com.sphy.stetic.Domain.Client;
-import com.sphy.stetic.contract.ClientListContract;
-import com.sphy.stetic.model.ClientListModel;
+import com.sphy.stetic.contract.Clients.ClientListContract;
+import com.sphy.stetic.model.Clients.ClientListModel;
 import com.sphy.stetic.view.Clients.ClientListView;
 
 import java.util.List;
