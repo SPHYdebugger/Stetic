@@ -72,7 +72,7 @@ public class ClientListView extends AppCompatActivity implements ClientListContr
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.search){
-            Intent intent = new Intent(ClientListView.this, SearchClientView.class);
+            Intent intent = new Intent(ClientListView.this, ClientSearchView.class);
             startActivity(intent);
             return true;
         }
