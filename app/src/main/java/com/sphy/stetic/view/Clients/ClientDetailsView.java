@@ -1,27 +1,19 @@
 package com.sphy.stetic.view.Clients;
 
-import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
-import com.sphy.stetic.Db.AppDatabase;
 import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.R;
-import com.sphy.stetic.contract.ClientDetailsContract;
-import com.sphy.stetic.presenter.ClientDetailsPresenter;
+import com.sphy.stetic.contract.Clients.ClientDetailsContract;
+import com.sphy.stetic.presenter.Clients.ClientDetailsPresenter;
 
 public class ClientDetailsView extends AppCompatActivity implements ClientDetailsContract.View {
 

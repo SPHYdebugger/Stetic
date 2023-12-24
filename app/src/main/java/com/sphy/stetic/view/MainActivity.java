@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sphy.stetic.view.Clients.ClientListView;
+import com.sphy.stetic.view.Products.ProductListView;
 import com.sphy.stetic.view.Shops.ShopListActivity;
 import com.sphy.stetic.R;
 
@@ -18,10 +19,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
-
-
-
     }
 
     @Override
@@ -37,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, ClientListView.class);
                 startActivity(intent);
                 return true;
+        }
+        if (item.getItemId() == R.id.goProducts){
+            Intent intent = new Intent(MainActivity.this, ProductListView.class);
+            startActivity(intent);
+            return true;
         }
         if (item.getItemId() == R.id.goShops){
             Intent intent = new Intent(MainActivity.this, ShopListActivity.class);

@@ -1,4 +1,4 @@
-package com.sphy.stetic.model;
+package com.sphy.stetic.model.Clients;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
@@ -8,7 +8,7 @@ import androidx.room.Room;
 
 import com.sphy.stetic.Db.AppDatabase;
 import com.sphy.stetic.Domain.Client;
-import com.sphy.stetic.contract.ClientRegisterContract;
+import com.sphy.stetic.contract.Clients.ClientRegisterContract;
 
 public class ClientRegisterModel implements ClientRegisterContract.Model {
 

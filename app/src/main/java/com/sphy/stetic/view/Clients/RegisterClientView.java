@@ -1,7 +1,5 @@
 package com.sphy.stetic.view.Clients;
 
-import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -9,12 +7,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.R;
-import com.sphy.stetic.contract.ClientRegisterContract;
-import com.sphy.stetic.presenter.ClientRegisterPresenter;
+import com.sphy.stetic.contract.Clients.ClientRegisterContract;
+import com.sphy.stetic.presenter.Clients.ClientRegisterPresenter;
 
 public class RegisterClientView extends AppCompatActivity implements ClientRegisterContract.View {
 

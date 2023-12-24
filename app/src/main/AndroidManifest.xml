@@ -42,7 +42,7 @@
 
         </activity>
         <activity
-            android:name=".view.Clients.ClientSearchView"
+            android:name=".view.Clients.SearchClientView"
             android:exported="false" >
 
         </activity>
@@ -63,6 +63,32 @@
         </activity>
         <activity
             android:name=".view.Shops.ShopListActivity"
+            android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".view.Products.RegisterProductView"
+            android:exported="false" >
+
+        </activity>
+
+        <activity
+            android:name=".view.Products.ProductDetailsView"
+            android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".view.Products.ProductListView"
+            android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".view.Products.SearchProductView"
+            android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".view.Products.ProductEditView"
             android:exported="false" >
 
         </activity>

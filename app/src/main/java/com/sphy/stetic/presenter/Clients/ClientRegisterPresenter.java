@@ -1,8 +1,8 @@
-package com.sphy.stetic.presenter;
+package com.sphy.stetic.presenter.Clients;
 
 import com.sphy.stetic.Domain.Client;
-import com.sphy.stetic.contract.ClientRegisterContract;
-import com.sphy.stetic.model.ClientRegisterModel;
+import com.sphy.stetic.contract.Clients.ClientRegisterContract;
+import com.sphy.stetic.model.Clients.ClientRegisterModel;
 import com.sphy.stetic.view.Clients.RegisterClientView;
 
 public class ClientRegisterPresenter implements ClientRegisterContract.Presenter {

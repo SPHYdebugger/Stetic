@@ -1,4 +1,4 @@
-package com.sphy.stetic.view.Clients;
+package com.sphy.stetic.view.Products;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
@@ -18,7 +18,7 @@ import com.sphy.stetic.R;
 import com.sphy.stetic.contract.Clients.ClientEditContract;
 import com.sphy.stetic.presenter.Clients.ClientEditPresenter;
 
-public class ClientEditView extends AppCompatActivity implements ClientEditContract.View {
+public class ProductEditView extends AppCompatActivity implements ClientEditContract.View {
     private Client client;
     private ClientEditContract.Presenter presenter;
 

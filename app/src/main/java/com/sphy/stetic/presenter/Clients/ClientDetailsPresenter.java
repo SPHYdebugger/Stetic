@@ -1,10 +1,10 @@
-package com.sphy.stetic.presenter;
+package com.sphy.stetic.presenter.Clients;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sphy.stetic.Domain.Client;
-import com.sphy.stetic.contract.ClientDetailsContract;
-import com.sphy.stetic.model.ClientDetailsModel;
+import com.sphy.stetic.contract.Clients.ClientDetailsContract;
+import com.sphy.stetic.model.Clients.ClientDetailsModel;
 
 public class ClientDetailsPresenter implements ClientDetailsContract.Presenter {
 
@@ -26,8 +26,7 @@ public class ClientDetailsPresenter implements ClientDetailsContract.Presenter {
 
             @Override
             public void onClientDetailsError(String message) {
-                // Manejar el error de obtener detalles del cliente
-                // Puedes mostrar un mensaje en la vista si lo deseas
+
             }
         });
     }

@@ -1,16 +1,16 @@
-package com.sphy.stetic.presenter;
+package com.sphy.stetic.presenter.Products;
 
 import com.sphy.stetic.Domain.Client;
-import com.sphy.stetic.contract.ClientSearchContract;
+import com.sphy.stetic.contract.Clients.ClientSearchContract;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientSearchPresenter implements ClientSearchContract.Presenter {
+public class ProductSearchPresenter implements ClientSearchContract.Presenter {
     private ClientSearchContract.View view;
     private ClientSearchContract.Model model;
 
-    public ClientSearchPresenter(ClientSearchContract.View view, ClientSearchContract.Model model) {
+    public ProductSearchPresenter(ClientSearchContract.View view, ClientSearchContract.Model model) {
         this.view = view;
         this.model = model;
     }
