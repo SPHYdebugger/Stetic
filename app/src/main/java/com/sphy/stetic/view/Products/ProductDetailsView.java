@@ -67,9 +67,8 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
         tvId.setText(product.getId());
         tvName.setText(product.getName());
         tvDescription.setText(product.getDescription());
-        tvPrice.setText((int) product.getPrice());
-
-
+        tvPrice.setText(String.valueOf(product.getPrice()));
+        tvRegisterDate.setText(String.valueOf(product.getRegisterDate()));
 
     }
 
