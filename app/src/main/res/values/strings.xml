@@ -12,8 +12,8 @@
     <string name="details">Detalles</string>
 
     <string name="client_insert">Cliente insertado en la base de datos</string>
-    <string name="cancel">Cancel</string>
-    <string name="modify">Modify</string>
+    <string name="cancel">Cancelar</string>
+    <string name="modify">Modificar</string>
     <string name="shop_insert">Tienda insertada en la base de datos</string>
-    <string name="modify_client">Modify Client</string>
+    <string name="modify_client">Modificar Cliente</string>
 </resources>
