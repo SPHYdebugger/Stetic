@@ -42,7 +42,7 @@
 
         </activity>
         <activity
-            android:name=".view.Clients.SearchClientView"
+            android:name=".view.Clients.ClientSearchView"
             android:exported="false" >
 
         </activity>
