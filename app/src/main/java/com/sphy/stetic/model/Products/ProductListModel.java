@@ -24,6 +24,10 @@ public class ProductListModel implements ProductListContract.Model {
 
     @Override
     public void loadAllProducts(OnLoadProductsListener listener) {
+
+
+
+
         AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
         List<Product> products = db.productDao().getAll();
         // Si va bien
