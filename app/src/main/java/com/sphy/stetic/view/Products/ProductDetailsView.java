@@ -74,7 +74,7 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
 
     @Override
     public void showUpdateSuccessMessage() {
-        Toast.makeText(this, "Product actualizado correctamente", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Producto actualizado correctamente", Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -1,28 +1,33 @@
 package com.sphy.stetic.presenter.Products;
 
 import com.sphy.stetic.Domain.Client;
+import com.sphy.stetic.Domain.Product;
 import com.sphy.stetic.contract.Clients.ClientEditContract;
+import com.sphy.stetic.contract.Products.ProductEditContract;
 import com.sphy.stetic.model.Clients.ClientEditModel;
+import com.sphy.stetic.model.Products.ProductEditModel;
 
-public class ProductEditPresenter implements ClientEditContract.Presenter {
-    private ClientEditContract.View view;
-    private ClientEditContract.Model model;
+public class ProductEditPresenter implements ProductEditContract.Presenter {
+    private ProductEditContract.View view;
+    private ProductEditContract.Model model;
 
-    public ProductEditPresenter(ClientEditContract.View view) {
+    public ProductEditPresenter(ProductEditContract.View view) {
         this.view = view;
-        this.model = new ClientEditModel();
+        this.model = new ProductEditModel();
     }
 
+
+
     @Override
-    public void updateClient(Client client) {
-        model.updateClient(client, new ClientEditModel.OnUpdateClientListener() {
+    public void updateProduct(Product product) {
+        model.updateProduct(product, new ProductEditModel.OnUpdateProductListener() {
             @Override
-            public void onUpdateClientSuccess() {
+            public void onUpdateProductSuccess() {
                 view.showUpdateSuccessMessage();
             }
 
             @Override
-            public void onUpdateClientError(String message) {
+            public void onUpdateProductError(String message) {
 
             }
         });

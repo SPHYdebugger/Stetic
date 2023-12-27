@@ -14,6 +14,7 @@ public class Product {
     private @NonNull String id;
     @ColumnInfo
     private String name;
+
     @ColumnInfo
     private String description;
     @ColumnInfo

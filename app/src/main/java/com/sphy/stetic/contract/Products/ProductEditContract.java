@@ -15,7 +15,7 @@ public interface ProductEditContract {
     }
 
     interface Presenter {
-        void updateProduct(Client client);
+        void updateProduct(Product product);
 
         void cancelEditing();
     }

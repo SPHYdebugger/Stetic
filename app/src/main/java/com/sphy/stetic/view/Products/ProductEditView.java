@@ -14,26 +14,29 @@ import androidx.room.Room;
 
 import com.sphy.stetic.Db.AppDatabase;
 import com.sphy.stetic.Domain.Client;
+import com.sphy.stetic.Domain.Product;
 import com.sphy.stetic.R;
 import com.sphy.stetic.contract.Clients.ClientEditContract;
+import com.sphy.stetic.contract.Products.ProductEditContract;
 import com.sphy.stetic.presenter.Clients.ClientEditPresenter;
+import com.sphy.stetic.presenter.Products.ProductEditPresenter;
 
-public class ProductEditView extends AppCompatActivity implements ClientEditContract.View {
-    private Client client;
-    private ClientEditContract.Presenter presenter;
+public class ProductEditView extends AppCompatActivity implements ProductEditContract.View {
+    private Product product;
+    private ProductEditContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_client_edit);
+        setContentView(R.layout.activity_product_edit);
 
         Intent intent = getIntent();
-        String clientDni = intent.getStringExtra("dni");
+        String productId = intent.getStringExtra("id");
         AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
-        client = db.clientDao().findByDni(clientDni);
-        loadClient(client);
+        product = db.productDao().findById(productId);
+        loadProduct(product);
 
-        presenter = new ClientEditPresenter(this);
+        presenter = new ProductEditPresenter(this);
 
         Button cancelButton = findViewById(R.id.btnCancel);
         Button modifyButton = findViewById(R.id.btnModify);
@@ -48,50 +51,49 @@ public class ProductEditView extends AppCompatActivity implements ClientEditCont
         modifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                modifyClient();
+                modifyProduct();
             }
         });
     }
 
-    private void loadClient(Client client) {
-        EditText etFirstName = findViewById(R.id.edit_firstName);
-        EditText etLastName = findViewById(R.id.edit_lastName);
-        EditText etDni = findViewById(R.id.edit_dni);
-        EditText etAddress = findViewById(R.id.edit_address);
-        EditText etCity = findViewById(R.id.edit_city);
-        EditText etBirthday = findViewById(R.id.edit_birthday);
-        CheckBox etVip = findViewById(R.id.client_vip);
+    private void loadProduct(Product Product) {
+        EditText etId = findViewById(R.id.edit_id);
+        EditText etName = findViewById(R.id.edit_name);
+        EditText etDescription = findViewById(R.id.edit_description);
+        EditText etPrice = findViewById(R.id.edit_price);
+        EditText etRegisterDate = findViewById(R.id.edit_registerDate);
 
 
-        etFirstName.setText(client.getFirstName());
-        etLastName.setText(client.getLastName());
-        etDni.setText(client.getDni());
-        etAddress.setText(client.getAddress());
-        etCity.setText(client.getCity());
-        etBirthday.setText(client.getBirthDay());
-        etVip.setChecked(client.isVip());
+        etId.setText(product.getId());
+        etName.setText(product.getName());
+        etDescription.setText(product.getDescription());
+        etPrice.setText(String.valueOf(product.getPrice()));
+        etRegisterDate.setText(product.getRegisterDate());
+
     }
 
-    private void modifyClient() {
-        EditText etFirstName = findViewById(R.id.edit_firstName);
-        EditText etLastName = findViewById(R.id.edit_lastName);
-        EditText etDni = findViewById(R.id.edit_dni);
-        EditText etAddress = findViewById(R.id.edit_address);
-        EditText etCity = findViewById(R.id.edit_city);
-        EditText etBirthday = findViewById(R.id.edit_birthday);
-        CheckBox etVip = findViewById(R.id.client_vip);
+    private void modifyProduct() {
+        EditText etName = findViewById(R.id.edit_name);
+        EditText etDescription = findViewById(R.id.edit_description);
+        EditText etPrice = findViewById(R.id.edit_price);
+        EditText etRegisterDate = findViewById(R.id.edit_registerDate);
 
-        client.setFirstName(etFirstName.getText().toString());
-        client.setLastName(etLastName.getText().toString());
-        client.setDni(etDni.getText().toString());
-        client.setAddress(etAddress.getText().toString());
-        client.setCity(etCity.getText().toString());
-        client.setBirthDay(etBirthday.getText().toString());
-        client.setVip(etVip.isChecked());
+
+        product.setName(etName.getText().toString());
+        product.setDescription(etDescription.getText().toString());
+        // Intenta convertir el texto a double
+        try {
+            double priceValue = Double.parseDouble(etPrice.getText().toString());
+            product.setPrice(priceValue);
+        } catch (NumberFormatException e) {
+            //TODO capturar la excepcion
+        }
+        product.setRegisterDate(etRegisterDate.getText().toString());
+
 
         // Actualizar el cliente en la base de datos
         AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
-        db.clientDao().update(client);
+        db.productDao().update(product);
 
 
         finish();
