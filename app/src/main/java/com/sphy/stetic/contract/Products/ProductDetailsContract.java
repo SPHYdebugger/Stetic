@@ -12,9 +12,9 @@ public interface ProductDetailsContract {
     }
 
     interface Presenter {
-        void getProductDetails(String id);
+        void getProductDetails(long id);
         void updateProduct(Product product);
-        void deleteProduct(String id);
+        void deleteProduct(long id);
     }
 
     interface Model {
@@ -33,8 +33,8 @@ public interface ProductDetailsContract {
             void onDeleteError(String message);
         }
 
-        void getProductDetails(String id, OnProductDetailsListener listener);
+        void getProductDetails(long id, OnProductDetailsListener listener);
         void updateProduct(Product product, OnUpdateListener listener);
-        void deleteProduct(String id, OnDeleteListener listener);
+        void deleteProduct(long id, OnDeleteListener listener);
     }
 }

@@ -17,6 +17,9 @@ public interface ProductApiInterface {
     @GET("products")
     Call<List<Product>> getProducts();
 
+    @GET("product/{productId}")
+    Call<Product> getProductById(@Path("productId") long productId);
+
     @POST("products")
     Call<Product> addProduct(@Body Product product);
 

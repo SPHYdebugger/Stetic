@@ -5,37 +5,57 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Product {
 
     @PrimaryKey
-    private @NonNull String id;
+    private @NonNull long id;
     @ColumnInfo
     private String name;
-
+    @ColumnInfo
+    private int size;
     @ColumnInfo
     private String description;
     @ColumnInfo
-    private double price;
+    private float price;
     @ColumnInfo
-    private String registerDate;
+    private String registrationDate;
+    @ColumnInfo
+    private boolean dangerous = false;
 
-    public Product(@NonNull String id, String name, String description, double price, String registerDate) {
+
+
+    public Product(){}
+
+    public Product(@NonNull long id, String name, int size, String description, float price, String registrationDate, boolean dangerous) {
         this.id = id;
         this.name = name;
+        this.size = size;
         this.description = description;
         this.price = price;
-        this.registerDate = registerDate;
+        this.registrationDate = registrationDate;
+        this.dangerous = dangerous;
+
     }
 
+    public Product(String name, int size, String description, float price, boolean dangerous) {
+
+        this.name = name;
+        this.size = size;
+        this.description = description;
+        this.price = price;
+        this.dangerous = dangerous;
+    }
+
+
     @NonNull
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(@NonNull String id) {
+    public void setId(@NonNull long id) {
         this.id = id;
     }
 
@@ -47,6 +67,14 @@ public class Product {
         this.name = name;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -55,19 +83,29 @@ public class Product {
         this.description = description;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    public String getRegisterDate() {
-        return registerDate;
+    public String getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setRegisterDate(String registerDate) {
-        this.registerDate = registerDate;
+    public void setRegistrationDate(String registrationDate) {
+        this.registrationDate = registrationDate;
     }
+
+    public boolean isDangerous() {
+        return dangerous;
+    }
+
+    public void setDangerous(boolean dangerous) {
+        this.dangerous = dangerous;
+    }
+
+
 }

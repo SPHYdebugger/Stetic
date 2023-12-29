@@ -10,12 +10,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.Domain.Product;
 import com.sphy.stetic.R;
-import com.sphy.stetic.contract.Clients.ClientDetailsContract;
 import com.sphy.stetic.contract.Products.ProductDetailsContract;
-import com.sphy.stetic.presenter.Clients.ClientDetailsPresenter;
 import com.sphy.stetic.presenter.Products.ProductDetailsPresenter;
 
 public class ProductDetailsView extends AppCompatActivity implements ProductDetailsContract.View {
@@ -30,7 +27,7 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
 
 
     private ProductDetailsContract.Presenter presenter;
-    private String productId;
+    private long productId;
 
 
 
@@ -50,7 +47,7 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
         presenter = new ProductDetailsPresenter(this);
 
         Intent intent = getIntent();
-        productId = intent.getStringExtra("id");
+        productId = intent.getLongExtra("id", productId);
         presenter.getProductDetails(productId);
     }
 
@@ -58,17 +55,17 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
     protected void onResume() {
         super.onResume();
         Intent intent = getIntent();
-        productId = intent.getStringExtra("id");
+        productId = intent.getLongExtra("id",productId);
         presenter.getProductDetails(productId);
     }
 
     @Override
     public void displayProductDetails(Product product) {
-        tvId.setText(product.getId());
+        tvId.setText(String.valueOf(product.getId()));
         tvName.setText(product.getName());
         tvDescription.setText(product.getDescription());
         tvPrice.setText(String.valueOf(product.getPrice()));
-        tvRegisterDate.setText(String.valueOf(product.getRegisterDate()));
+        tvRegisterDate.setText(product.getRegistrationDate());
 
     }
 

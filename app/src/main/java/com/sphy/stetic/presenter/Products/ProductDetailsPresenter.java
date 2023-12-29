@@ -20,7 +20,7 @@ public class ProductDetailsPresenter implements ProductDetailsContract.Presenter
     }
 
     @Override
-    public void getProductDetails(String id) {
+    public void getProductDetails(long  id) {
         model.getProductDetails(id, new ProductDetailsModel.OnProductDetailsListener() {
             @Override
             public void onProductDetailsSuccess(Product product) {
@@ -52,7 +52,7 @@ public class ProductDetailsPresenter implements ProductDetailsContract.Presenter
     }
 
     @Override
-    public void deleteProduct(String id) {
+    public void deleteProduct(long id) {
         model.deleteProduct(id, new ProductDetailsModel.OnDeleteListener() {
             @Override
             public void onDeleteSuccess() {
