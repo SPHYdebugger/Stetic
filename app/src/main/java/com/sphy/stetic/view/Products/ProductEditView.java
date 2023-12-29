@@ -6,19 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.sphy.stetic.Db.AppDatabase;
-import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.Domain.Product;
 import com.sphy.stetic.R;
-import com.sphy.stetic.contract.Clients.ClientEditContract;
 import com.sphy.stetic.contract.Products.ProductEditContract;
-import com.sphy.stetic.presenter.Clients.ClientEditPresenter;
 import com.sphy.stetic.presenter.Products.ProductEditPresenter;
 
 public class ProductEditView extends AppCompatActivity implements ProductEditContract.View {
@@ -56,7 +52,7 @@ public class ProductEditView extends AppCompatActivity implements ProductEditCon
         });
     }
 
-    private void loadProduct(Product Product) {
+    private void loadProduct(Product product) {
         EditText etId = findViewById(R.id.edit_id);
         EditText etName = findViewById(R.id.edit_name);
         EditText etDescription = findViewById(R.id.edit_description);
@@ -64,11 +60,11 @@ public class ProductEditView extends AppCompatActivity implements ProductEditCon
         EditText etRegisterDate = findViewById(R.id.edit_registerDate);
 
 
-        etId.setText(product.getId());
+        etId.setText(String.valueOf(product.getId()));
         etName.setText(product.getName());
         etDescription.setText(product.getDescription());
         etPrice.setText(String.valueOf(product.getPrice()));
-        etRegisterDate.setText(product.getRegisterDate());
+        etRegisterDate.setText(product.getRegistrationDate());
 
     }
 
@@ -81,14 +77,14 @@ public class ProductEditView extends AppCompatActivity implements ProductEditCon
 
         product.setName(etName.getText().toString());
         product.setDescription(etDescription.getText().toString());
-        // Intenta convertir el texto a double
+        // Intenta convertir el texto a float
         try {
-            double priceValue = Double.parseDouble(etPrice.getText().toString());
+            float priceValue = Float.parseFloat(etPrice.getText().toString());
             product.setPrice(priceValue);
         } catch (NumberFormatException e) {
             //TODO capturar la excepcion
         }
-        product.setRegisterDate(etRegisterDate.getText().toString());
+        product.setRegistrationDate(etRegisterDate.getText().toString());
 
 
         // Actualizar el cliente en la base de datos

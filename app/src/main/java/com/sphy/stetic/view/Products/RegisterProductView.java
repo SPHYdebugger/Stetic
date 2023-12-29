@@ -31,20 +31,22 @@ public class RegisterProductView extends AppCompatActivity implements ProductReg
     }
 
     public void createProduct(View view) {
-        EditText etId = findViewById(R.id.product_id);
+
         EditText etName = findViewById(R.id.product_name);
+        EditText etSize = findViewById(R.id.product_size);
         EditText etDescription = findViewById(R.id.product_description);
         EditText etPrice = findViewById(R.id.product_price);
-        EditText etRegisterDate = findViewById(R.id.product_registerDate);
+        CheckBox cbDangerous = findViewById(R.id.product_dangerous);
 
-        String id = etId.getText().toString();
+
         String name = etName.getText().toString();
+        int size = Integer.parseInt(etSize.getText().toString());
         String description = etDescription.getText().toString();
-        double price = Double.parseDouble(etPrice.getText().toString());
-        String registerDate = etRegisterDate.getText().toString();
+        float price = Float.parseFloat(etPrice.getText().toString());
+        boolean dangerous = cbDangerous.isChecked();
 
 
-        Product product = new Product(id, name, description, price, registerDate);
+        Product product = new Product(name, size, description, price, dangerous);
         presenter.insertProduct(product);
     }
 
@@ -60,21 +62,23 @@ public class RegisterProductView extends AppCompatActivity implements ProductReg
 
     @Override
     public void clearFields() {
-        EditText etId = findViewById(R.id.product_id);
+
+
         EditText etName = findViewById(R.id.product_name);
+        EditText etSize = findViewById(R.id.product_size);
         EditText etDescription = findViewById(R.id.product_description);
         EditText etPrice = findViewById(R.id.product_price);
-        EditText etRegisterDate = findViewById(R.id.product_registerDate);
+        CheckBox cbDangerous = findViewById(R.id.product_dangerous);
 
 
 
-        etId.setText("");
         etName.setText("");
+        etSize.setText("");
         etDescription.setText("");
         etPrice.setText("");
-        etRegisterDate.setText("");
+        cbDangerous.clearFocus();
 
 
-        etId.requestFocus();
+        etName.requestFocus();
     }
 }

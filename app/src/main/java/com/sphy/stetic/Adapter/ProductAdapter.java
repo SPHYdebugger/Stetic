@@ -3,6 +3,7 @@ package com.sphy.stetic.Adapter;
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.sphy.stetic.Domain.Product;
+import com.sphy.stetic.api.ProductApi;
+import com.sphy.stetic.api.ProductApiInterface;
 import com.sphy.stetic.view.Clients.ClientDetailsView;
 import com.sphy.stetic.Db.AppDatabase;
 import com.sphy.stetic.R;
@@ -22,7 +25,11 @@ import com.sphy.stetic.view.Products.ProductDetailsView;
 
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.TaskHolder> {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductHolder> {
 
     private List<Product> products;
 
@@ -33,16 +40,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.TaskHold
 
     @NonNull
     @Override
-    public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.product_list_item, parent, false);
-        return new TaskHolder(view);
+        return new ProductHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
-        holder.tvId.setText(products.get(position).getId());
+    public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
+        String idString = String.valueOf(products.get(position).getId());
+        holder.tvId.setText(idString);
         holder.tvName.setText(products.get(position).getName());
+        holder.tvDescription.setText(products.get(position).getDescription());
         holder.tvPrice.setText(String.valueOf(products.get(position).getPrice()));
 
 
@@ -54,10 +63,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.TaskHold
         return products.size();
     }
 
-    public class TaskHolder extends RecyclerView.ViewHolder {
+    public class ProductHolder extends RecyclerView.ViewHolder {
 
         public TextView tvId;
         public TextView tvName;
+        public TextView tvDescription;
 
         public TextView tvPrice;
 
@@ -65,13 +75,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.TaskHold
         public Button detailsButton;
         public View parentView;
 
-        public TaskHolder(@NonNull View view) {
+        public ProductHolder(@NonNull View view) {
             super(view);
             parentView = view;
 
             tvId = view.findViewById(R.id.product_item_id);
             tvName = view.findViewById(R.id.product_item_name);
-
+            tvDescription = view.findViewById(R.id.product_item_description);
             tvPrice = view.findViewById(R.id.product_item_price);
 
             deleteButton = view.findViewById(R.id.delete_item_button);
@@ -79,7 +89,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.TaskHold
 
 
             detailsButton.setOnClickListener(v -> goProductDetails(view));
-            deleteButton.setOnClickListener(v -> deleteProduct(view));
+            deleteButton.setOnClickListener(v -> deleteProduct());
 
 
         }
@@ -94,16 +104,30 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.TaskHold
 
 
 
-        private void deleteProduct(View itemView) {
+        private void deleteProduct() {
             int currentPosition = getAdapterPosition();
             Product product = products.get(currentPosition);
 
-            AppDatabase db = Room.databaseBuilder(itemView.getContext(), AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
-            db.productDao().delete(product);
+            ProductApiInterface api = ProductApi.buildInstance();
+            Call<Void> deleteProductCall = api.deleteProduct(product.getId());
+            deleteProductCall.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
 
-            products.remove(currentPosition);
-            notifyItemRemoved(currentPosition);
-            notifyItemRangeChanged(currentPosition, products.size());
+                        products.remove(currentPosition);
+                        notifyItemRemoved(currentPosition);
+                        notifyItemRangeChanged(currentPosition, products.size());
+
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Log.e("deleteProduct", "Error al conectar con el servidor: " + t.getMessage());
+
+                }
+            });
+
+
         }
     }
 }
