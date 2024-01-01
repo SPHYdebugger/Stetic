@@ -36,20 +36,7 @@ public class ProductDetailsPresenter implements ProductDetailsContract.Presenter
         });
     }
 
-    @Override
-    public void updateProduct(Product product) {
-        model.updateProduct(product, new ProductDetailsModel.OnUpdateListener() {
-            @Override
-            public void onUpdateSuccess() {
-                view.showUpdateSuccessMessage();
-            }
 
-            @Override
-            public void onUpdateError(String message) {
-                view.showUpdateErrorMessage();
-            }
-        });
-    }
 
     @Override
     public void deleteProduct(long id) {

@@ -88,7 +88,7 @@ public class ClientDetailsView extends AppCompatActivity implements ClientDetail
     @Override
     public void showDeleteSuccessMessage() {
         Toast.makeText(this, "Cliente eliminado correctamente", Toast.LENGTH_LONG).show();
-        finish(); // Cerrar la actividad después de eliminar el cliente
+        finish();
     }
 
     @Override

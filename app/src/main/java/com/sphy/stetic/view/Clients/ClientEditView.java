@@ -89,7 +89,7 @@ public class ClientEditView extends AppCompatActivity implements ClientEditContr
         client.setBirthDay(etBirthday.getText().toString());
         client.setVip(etVip.isChecked());
 
-        // Actualizar el cliente en la base de datos
+
         AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
         db.clientDao().update(client);
 

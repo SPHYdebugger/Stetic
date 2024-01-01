@@ -54,17 +54,7 @@ public class ProductDetailsModel implements ProductDetailsContract.Model {
 
 
 
-    @Override
-    public void updateProduct(Product product, OnUpdateListener listener) {
 
-        AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
-        try {
-            db.productDao().update(product);
-            listener.onUpdateSuccess();
-        } catch (Exception e) {
-            listener.onUpdateError("Error al actualizar el producto");
-        }
-    }
 
     @Override
     public void deleteProduct(long id, OnDeleteListener listener) {

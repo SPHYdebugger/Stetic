@@ -24,7 +24,7 @@ public class ClientListModel implements ClientListContract.Model {
     public void loadAllClients(OnLoadClientsListener listener) {
         AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
         List<Client> clients = db.clientDao().getAll();
-        // Si va bien
+
         listener.onLoadClientsSuccess(clients);
 
     }

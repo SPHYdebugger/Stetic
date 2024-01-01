@@ -5,15 +5,14 @@ import com.sphy.stetic.Domain.Product;
 public interface ProductDetailsContract {
     interface View {
         void displayProductDetails(Product product);
-        void showUpdateSuccessMessage();
-        void showUpdateErrorMessage();
+
         void showDeleteSuccessMessage();
         void showDeleteErrorMessage();
     }
 
     interface Presenter {
         void getProductDetails(long id);
-        void updateProduct(Product product);
+
         void deleteProduct(long id);
     }
 
@@ -23,10 +22,7 @@ public interface ProductDetailsContract {
             void onProductDetailsError(String message);
         }
 
-        interface OnUpdateListener {
-            void onUpdateSuccess();
-            void onUpdateError(String message);
-        }
+
 
         interface OnDeleteListener {
             void onDeleteSuccess();
@@ -34,7 +30,7 @@ public interface ProductDetailsContract {
         }
 
         void getProductDetails(long id, OnProductDetailsListener listener);
-        void updateProduct(Product product, OnUpdateListener listener);
+
         void deleteProduct(long id, OnDeleteListener listener);
     }
 }

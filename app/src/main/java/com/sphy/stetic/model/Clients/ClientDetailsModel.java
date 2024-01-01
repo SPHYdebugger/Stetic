@@ -20,7 +20,7 @@ public class ClientDetailsModel implements ClientDetailsContract.Model {
 
     @Override
     public void getClientDetails(String dni, OnClientDetailsListener listener) {
-        // Lógica para obtener detalles del cliente por su DNI
+
         AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
         Client client = db.clientDao().findByDni(dni);
 
@@ -33,7 +33,7 @@ public class ClientDetailsModel implements ClientDetailsContract.Model {
 
     @Override
     public void updateClient(Client client, OnUpdateListener listener) {
-        // Lógica para actualizar el cliente
+
         AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
         try {
             db.clientDao().update(client);
@@ -45,7 +45,7 @@ public class ClientDetailsModel implements ClientDetailsContract.Model {
 
     @Override
     public void deleteClient(String dni, ClientDetailsContract.Model.OnDeleteListener listener) {
-        // Lógica para eliminar el cliente por su DNI
+
         AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
         try {
             db.clientDao().deleteByDni(dni);

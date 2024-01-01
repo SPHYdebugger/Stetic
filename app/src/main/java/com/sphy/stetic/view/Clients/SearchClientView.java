@@ -75,5 +75,9 @@ public class SearchClientView extends AppCompatActivity {
 
         adapter.notifyDataSetChanged();
     }
+
+
+    public void performSearch(View view) {
+    }
 }
 

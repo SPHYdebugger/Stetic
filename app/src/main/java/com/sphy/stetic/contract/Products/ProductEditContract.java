@@ -1,34 +1,41 @@
 package com.sphy.stetic.contract.Products;
 
-import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.Domain.Product;
 
 public interface ProductEditContract {
     interface View {
         void showUpdateSuccessMessage();
-
         void showUpdateErrorMessage();
-
-        void showCancelMessage();
-
-        void clearFields();
+        void displayProductDetails(Product product);
     }
 
     interface Presenter {
-        void updateProduct(Product product);
+        void getProductDetails(long id);
 
-        void cancelEditing();
+        void updateProduct(long id, Product product);
+
+
     }
 
     interface Model {
-        interface OnUpdateProductListener {
-            void onUpdateProductSuccess();
+        void getProductDetails(long id, OnProductDetailsListener listener);
 
-            void onUpdateProductError(String message);
+
+        interface OnUpdateProductListener {
+            void onUpdateProductSuccess(String successMessage);
+
+            void onUpdateProductError(String errorMessage);
+        }
+        interface OnProductDetailsListener {
+            void onProductDetailsSuccess(Product product);
+            void onProductDetailsError(String errorMessage);
         }
 
-        void updateProduct(Product product, OnUpdateProductListener listener);
+
+        void updateProduct(long id, Product product, OnUpdateProductListener listener);
+
     }
+
+
+
 }
-
-

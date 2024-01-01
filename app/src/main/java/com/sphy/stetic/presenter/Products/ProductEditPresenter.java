@@ -1,40 +1,46 @@
 package com.sphy.stetic.presenter.Products;
 
-import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.Domain.Product;
-import com.sphy.stetic.contract.Clients.ClientEditContract;
 import com.sphy.stetic.contract.Products.ProductEditContract;
-import com.sphy.stetic.model.Clients.ClientEditModel;
 import com.sphy.stetic.model.Products.ProductEditModel;
+import com.sphy.stetic.view.Products.ProductEditView;
 
 public class ProductEditPresenter implements ProductEditContract.Presenter {
-    private ProductEditContract.View view;
-    private ProductEditContract.Model model;
 
-    public ProductEditPresenter(ProductEditContract.View view) {
+    private final ProductEditView view;
+    private final ProductEditModel model;
+
+    public ProductEditPresenter(ProductEditView view) {
         this.view = view;
-        this.model = new ProductEditModel();
+        this.model = new ProductEditModel(view);
     }
 
-
-
     @Override
-    public void updateProduct(Product product) {
-        model.updateProduct(product, new ProductEditModel.OnUpdateProductListener() {
+    public void getProductDetails(long productId) {
+        model.getProductDetails(productId, new ProductEditContract.Model.OnProductDetailsListener() {
             @Override
-            public void onUpdateProductSuccess() {
-                view.showUpdateSuccessMessage();
+            public void onProductDetailsSuccess(Product product) {
+                view.displayProductDetails(product);
             }
-
             @Override
-            public void onUpdateProductError(String message) {
+            public void onProductDetailsError(String errorMessage) {
 
             }
         });
     }
 
     @Override
-    public void cancelEditing() {
-        view.showCancelMessage();
+    public void updateProduct(long id, Product product) {
+        model.updateProduct(id, product, new ProductEditContract.Model.OnUpdateProductListener() {
+
+            @Override
+            public void onUpdateProductSuccess(String successMessage) {
+                view.showUpdateErrorMessage();
+            }
+            @Override
+            public void onUpdateProductError(String errorMessage) {
+                view.showUpdateErrorMessage();
+            }
+        });
     }
 }

@@ -1,43 +1,34 @@
 package com.sphy.stetic.presenter.Products;
 
 import com.sphy.stetic.Domain.Client;
-import com.sphy.stetic.contract.Clients.ClientSearchContract;
+import com.sphy.stetic.Domain.Product;
+import com.sphy.stetic.contract.Products.ProductSearchContract;
+import com.sphy.stetic.model.Products.ProductSearchModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ProductSearchPresenter implements ClientSearchContract.Presenter {
-    private ClientSearchContract.View view;
-    private ClientSearchContract.Model model;
+public class ProductSearchPresenter implements ProductSearchContract.Presenter {
 
-    public ProductSearchPresenter(ClientSearchContract.View view, ClientSearchContract.Model model) {
+    private final ProductSearchContract.View view;
+    private final ProductSearchModel model;
+
+    public ProductSearchPresenter(ProductSearchContract.View view) {
         this.view = view;
-        this.model = model;
+        this.model = new ProductSearchModel();
     }
 
     @Override
-    public void performSearch(String searchText) {
-        List<Client> allClients = model.getAllClients();
-        List<Client> searchResults = filterClients(allClients, searchText);
-        view.showSearchResults(searchResults);
-    }
-
-    private List<Client> filterClients(List<Client> clients, String searchText) {
-        // Implementa la lógica de filtrado según tus necesidades
-        // Por ejemplo, podrías buscar coincidencias en el nombre, apellido o ciudad
-        // y devolver la lista de resultados filtrados.
-        // Aquí, se proporciona una implementación simple que busca coincidencias en el nombre.
-        searchText = searchText.toLowerCase();
-        List<Client> filteredClients = new ArrayList<>();
-
-        for (Client client : clients) {
-            if (client.getFirstName().toLowerCase().contains(searchText) ||
-                    client.getLastName().toLowerCase().contains(searchText) ||
-                    client.getCity().toLowerCase().contains(searchText)) {
-                filteredClients.add(client);
+    public void performSearch(int searchId, String searchName) {
+        model.performSearch(searchId, searchName, new ProductSearchContract.Model.OnSearchListener() {
+            @Override
+            public void onSearchSuccess(List<Product> searchResults) {
+                view.displaySearchResults(searchResults);
             }
-        }
 
-        return filteredClients;
+            @Override
+            public void onSearchError(String errorMessage) {
+                view.displaySearchError("No se pudo realizar la busqueda");
+            }
+        });
     }
 }
