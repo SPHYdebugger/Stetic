@@ -27,7 +27,7 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
 
 
     private ProductDetailsContract.Presenter presenter;
-    private long productId;
+    private long id;
 
 
 
@@ -47,16 +47,16 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
         presenter = new ProductDetailsPresenter(this);
 
         Intent intent = getIntent();
-        productId = intent.getLongExtra("id", productId);
-        presenter.getProductDetails(productId);
+        id = intent.getLongExtra("id", id);
+        presenter.getProductDetails(id);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Intent intent = getIntent();
-        productId = intent.getLongExtra("id",productId);
-        presenter.getProductDetails(productId);
+        id = intent.getLongExtra("id",id);
+        presenter.getProductDetails(id);
     }
 
     @Override
@@ -69,15 +69,7 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
 
     }
 
-    @Override
-    public void showUpdateSuccessMessage() {
-        Toast.makeText(this, "Producto actualizado correctamente", Toast.LENGTH_LONG).show();
-    }
 
-    @Override
-    public void showUpdateErrorMessage() {
-        Toast.makeText(this, "Error al actualizar el Producto", Toast.LENGTH_LONG).show();
-    }
 
     @Override
     public void showDeleteSuccessMessage() {
@@ -100,13 +92,13 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.edit){
             Intent intent = new Intent(ProductDetailsView.this, ProductEditView.class);
-            intent.putExtra("id", productId);
+            intent.putExtra("id", id);
             startActivity(intent);
 
             return true;
         }
         if (item.getItemId() == R.id.delete) {
-            presenter.deleteProduct(productId);
+            presenter.deleteProduct(id);
             return true;
         }
         return super.onOptionsItemSelected(item);

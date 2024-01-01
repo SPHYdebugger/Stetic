@@ -23,10 +23,7 @@ public class ClientSearchPresenter implements ClientSearchContract.Presenter {
     }
 
     private List<Client> filterClients(List<Client> clients, String searchText) {
-        // Implementa la lógica de filtrado según tus necesidades
-        // Por ejemplo, podrías buscar coincidencias en el nombre, apellido o ciudad
-        // y devolver la lista de resultados filtrados.
-        // Aquí, se proporciona una implementación simple que busca coincidencias en el nombre.
+
         searchText = searchText.toLowerCase();
         List<Client> filteredClients = new ArrayList<>();
 
