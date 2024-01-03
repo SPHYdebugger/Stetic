@@ -41,7 +41,7 @@ public class ProductRegisterModel implements ProductRegisterContract.Model {
 
             @Override
             public void onFailure(Call<Product> call, Throwable t) {
-                Log.e("addTask", t.getMessage());
+                Log.e("addProduct", t.getMessage());
                 listener.onProductInsertedError("No se ha podido conectar con el servidor");
             }
         });

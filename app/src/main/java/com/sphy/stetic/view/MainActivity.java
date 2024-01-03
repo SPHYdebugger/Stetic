@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.sphy.stetic.view.Clients.ClientListView;
 import com.sphy.stetic.view.Products.ProductListView;
-import com.sphy.stetic.view.Shops.ShopListActivity;
 import com.sphy.stetic.R;
+import com.sphy.stetic.view.Shops.ShopListView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if (item.getItemId() == R.id.goShops){
-            Intent intent = new Intent(MainActivity.this, ShopListActivity.class);
+            Intent intent = new Intent(MainActivity.this, ShopListView.class);
             startActivity(intent);
             return true;
         }

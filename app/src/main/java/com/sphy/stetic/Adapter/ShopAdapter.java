@@ -13,14 +13,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import com.sphy.stetic.view.Shops.ShopDetailsActivity;
 import com.sphy.stetic.Db.AppDatabase;
 import com.sphy.stetic.Domain.Shop;
 import com.sphy.stetic.R;
+import com.sphy.stetic.view.Shops.ShopDetailsView;
 
 import java.util.List;
 
-public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.TaskHolder> {
+public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
 
     private List<Shop> shops;
 
@@ -31,14 +31,14 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.TaskHolder> {
 
     @NonNull
     @Override
-    public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ShopHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.shop_list_item, parent, false);
-        return new TaskHolder(view);
+        return new ShopHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ShopHolder holder, int position) {
         holder.tvName.setText(shops.get(position).getName());
         holder.tvAddress.setText(shops.get(position).getAddress());
         holder.tvCity.setText(shops.get(position).getCity());
@@ -50,7 +50,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.TaskHolder> {
         return shops.size();
     }
 
-    public class TaskHolder extends RecyclerView.ViewHolder {
+    public class ShopHolder extends RecyclerView.ViewHolder {
 
         public TextView tvName;
         public TextView tvAddress;
@@ -59,7 +59,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.TaskHolder> {
         public Button detailsButton;
         public View parentView;
 
-        public TaskHolder(@NonNull View view) {
+        public ShopHolder(@NonNull View view) {
             super(view);
             parentView = view;
 
@@ -78,9 +78,12 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.TaskHolder> {
 
 
         private void goShopDetails(View itemView) {
-        Intent intent = new Intent(itemView.getContext(), ShopDetailsActivity.class);
+        Intent intent = new Intent(itemView.getContext(), ShopDetailsView.class);
         Shop shop = shops.get(getAdapterPosition());
+        intent.putExtra("id", shop.getId());
         intent.putExtra("name", shop.getName());
+        intent.putExtra("latitude", shop.getLatitude());
+        intent.putExtra("longitude", shop.getLongitude());
         itemView.getContext().startActivity(intent);
         }
 

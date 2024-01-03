@@ -38,9 +38,11 @@ public class SearchClientView extends AppCompatActivity {
         allClients = new ArrayList<>();
         searchResults = new ArrayList<>();
 
-        AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
+        /*AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
         allClients.addAll(db.clientDao().getAll());
         Log.d("SearchClientActivity", "Total clients: " + allClients.size());
+
+         */
 
         RecyclerView recyclerView = findViewById(R.id.search_results_list);
         recyclerView.setHasFixedSize(true);
@@ -66,8 +68,8 @@ public class SearchClientView extends AppCompatActivity {
         searchResults.clear();
 
         for (Client client : allClients) {
-            if (client.getFirstName().toLowerCase().contains(searchText) ||
-                    client.getLastName().toLowerCase().contains(searchText) ||
+            if (client.getFirstname().toLowerCase().contains(searchText) ||
+                    client.getLastname().toLowerCase().contains(searchText) ||
                     client.getCity().toLowerCase().contains(searchText)) {
                 searchResults.add(client);
             }

@@ -17,8 +17,8 @@ public class ClientDetailsPresenter implements ClientDetailsContract.Presenter {
     }
 
     @Override
-    public void getClientDetails(String dni) {
-        model.getClientDetails(dni, new ClientDetailsModel.OnClientDetailsListener() {
+    public void getClientDetails(long id) {
+        model.getClientDetails(id, new ClientDetailsModel.OnClientDetailsListener() {
             @Override
             public void onClientDetailsSuccess(Client client) {
                 view.displayClientDetails(client);
@@ -31,20 +31,7 @@ public class ClientDetailsPresenter implements ClientDetailsContract.Presenter {
         });
     }
 
-    @Override
-    public void updateClient(Client client) {
-        model.updateClient(client, new ClientDetailsModel.OnUpdateListener() {
-            @Override
-            public void onUpdateSuccess() {
-                view.showUpdateSuccessMessage();
-            }
 
-            @Override
-            public void onUpdateError(String message) {
-                view.showUpdateErrorMessage();
-            }
-        });
-    }
 
     @Override
     public void deleteClient(String dni) {

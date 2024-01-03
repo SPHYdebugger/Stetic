@@ -9,10 +9,10 @@ import com.sphy.stetic.Domain.Shop;
 
 @Database(entities = {Client.class, Shop.class, Product.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
-    public abstract ClientDao clientDao();
+
 
     public abstract ShopDao shopDao();
-    public abstract ProductDao productDao();
+
 }
 
 

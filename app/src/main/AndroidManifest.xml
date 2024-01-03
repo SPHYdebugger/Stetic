@@ -53,17 +53,17 @@
 
         </activity>
         <activity
-            android:name=".view.Shops.RegisterShopActivity"
+            android:name=".view.Shops.RegisterShopView"
             android:exported="false" >
 
         </activity>
         <activity
-            android:name=".view.Shops.ShopDetailsActivity"
+            android:name=".view.Shops.ShopDetailsView"
             android:exported="false" >
 
         </activity>
         <activity
-            android:name=".view.Shops.ShopListActivity"
+            android:name=".view.Shops.ShopListView"
             android:exported="false" >
 
         </activity>

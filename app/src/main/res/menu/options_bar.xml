@@ -16,4 +16,11 @@
         android:icon="@android:drawable/ic_menu_edit"
         android:title="edit"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/btn_star"
+        android:title="favorite"
+        app:showAsAction="always" />
 </menu>

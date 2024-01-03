@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".view.Clients.ClientEditView">
+    tools:context=".view.Products.ProductEditView">
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -13,7 +13,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <EditText
             android:id="@+id/edit_id"
             android:layout_width="match_parent"
@@ -21,37 +20,44 @@
             android:hint="id" />
 
         <EditText
-            android:id="@+id/edit_firstName"
+            android:id="@+id/edit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="First Name" />
+            android:layout_below="@id/edit_name"
+            android:layout_marginTop="8dp"
+            android:hint="Name" />
 
         <EditText
-            android:id="@+id/edit_lastName"
+            android:id="@+id/edit_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edit_firstName"
+            android:layout_below="@id/edit_address"
             android:layout_marginTop="8dp"
-            android:hint="Last Name" />
+            android:hint="Address" />
 
         <EditText
-            android:id="@+id/edit_dni"
+            android:id="@+id/edit_solarium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edit_lastName"
+            android:layout_below="@id/edit_solarium"
             android:layout_marginTop="8dp"
-            android:hint="DNI" />
-
+            android:hint="Solarium" />
 
         <EditText
-            android:id="@+id/edit_city"
+            android:id="@+id/edit_latitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edit_dni"
+            android:layout_below="@id/edit_latitude"
             android:layout_marginTop="8dp"
-            android:hint="City" />
+            android:hint="Latitude" />
 
-
+        <EditText
+            android:id="@+id/edit_longitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_longitude"
+            android:layout_marginTop="8dp"
+            android:hint="Longitude" />
 
 
     </LinearLayout>
@@ -62,21 +68,15 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="1dp">
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
 
-            android:layout_marginTop="16dp"
-            android:text="@string/cancel" />
 
         <Button
             android:id="@+id/btnModify"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="modifyClient"
-            android:text="@string/modify_client" />
+            android:onClick="modifyProduct"
+            android:text="modify_product" />
 
     </LinearLayout>
 

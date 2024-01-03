@@ -15,6 +15,6 @@ public class ClientSearchModel implements ClientSearchContract.Model {
 
     @Override
     public List<Client> getAllClients() {
-        return database.clientDao().getAll();
+        return null;
     }
 }

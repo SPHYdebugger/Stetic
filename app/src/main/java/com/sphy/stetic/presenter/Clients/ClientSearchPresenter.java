@@ -28,8 +28,8 @@ public class ClientSearchPresenter implements ClientSearchContract.Presenter {
         List<Client> filteredClients = new ArrayList<>();
 
         for (Client client : clients) {
-            if (client.getFirstName().toLowerCase().contains(searchText) ||
-                    client.getLastName().toLowerCase().contains(searchText) ||
+            if (client.getFirstname().toLowerCase().contains(searchText) ||
+                    client.getLastname().toLowerCase().contains(searchText) ||
                     client.getCity().toLowerCase().contains(searchText)) {
                 filteredClients.add(client);
             }
