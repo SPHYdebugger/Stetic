@@ -22,8 +22,6 @@ public interface ProductDetailsContract {
             void onProductDetailsError(String message);
         }
 
-
-
         interface OnDeleteListener {
             void onDeleteSuccess();
             void onDeleteError(String message);

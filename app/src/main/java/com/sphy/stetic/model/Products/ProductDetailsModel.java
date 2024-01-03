@@ -53,9 +53,6 @@ public class ProductDetailsModel implements ProductDetailsContract.Model {
     }
 
 
-
-
-
     @Override
     public void deleteProduct(long id, OnDeleteListener listener) {
 

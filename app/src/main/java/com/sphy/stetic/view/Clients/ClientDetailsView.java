@@ -17,19 +17,21 @@ import com.sphy.stetic.presenter.Clients.ClientDetailsPresenter;
 
 public class ClientDetailsView extends AppCompatActivity implements ClientDetailsContract.View {
 
+    private TextView tvClientId;
     private TextView tvFirstName;
     private TextView tvLastName;
     private TextView tvDni;
-    private TextView tvAddress;
+
     private TextView tvCity;
-    private TextView tvBirthday;
+
     private TextView tvVip;
     private boolean isVip;
 
 
 
     private ClientDetailsContract.Presenter presenter;
-    private String clientDni;
+    private long id;
+    private String dni;
 
 
 
@@ -37,39 +39,40 @@ public class ClientDetailsView extends AppCompatActivity implements ClientDetail
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_details);
-
+        tvClientId = findViewById(R.id.detail_clientId);
         tvFirstName = findViewById(R.id.detail_firstName);
         tvLastName = findViewById(R.id.detail_lastName);
         tvDni = findViewById(R.id.detail_dni);
-        tvAddress = findViewById(R.id.detail_address);
         tvCity = findViewById(R.id.detail_city);
-        tvBirthday = findViewById(R.id.detail_birthday);
         tvVip = findViewById(R.id.detail_vip);
 
 
         presenter = new ClientDetailsPresenter(this);
 
         Intent intent = getIntent();
-        clientDni = intent.getStringExtra("dni");
-        presenter.getClientDetails(clientDni);
+        id = intent.getLongExtra("id",id);
+        dni = intent.getStringExtra("dni");
+        presenter.getClientDetails(id);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Intent intent = getIntent();
-        clientDni = intent.getStringExtra("dni");
-        presenter.getClientDetails(clientDni);
+        id = intent.getLongExtra("id",id);
+        dni = intent.getStringExtra("dni");
+        presenter.getClientDetails(id);
     }
 
     @Override
     public void displayClientDetails(Client client) {
-        tvFirstName.setText(client.getFirstName());
-        tvLastName.setText(client.getLastName());
+        tvClientId.setText(String.valueOf(client.getId()));
+        tvFirstName.setText(client.getFirstname());
+        tvLastName.setText(client.getLastname());
         tvDni.setText(client.getDni());
-        tvAddress.setText(client.getAddress());
+
         tvCity.setText(client.getCity());
-        tvBirthday.setText(client.getBirthDay());
+
         isVip = client.isVip();
         tvVip.setText(isVip ? "Sí" : "No");
 
@@ -106,13 +109,13 @@ public class ClientDetailsView extends AppCompatActivity implements ClientDetail
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.edit){
             Intent intent = new Intent(ClientDetailsView.this, ClientEditView.class);
-            intent.putExtra("dni", clientDni);
+            intent.putExtra("id", id);
             startActivity(intent);
 
             return true;
         }
         if (item.getItemId() == R.id.delete) {
-            presenter.deleteClient(clientDni);
+            presenter.deleteClient(dni);
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -1,7 +1,5 @@
 package com.sphy.stetic.view.Shops;
 
-import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
-
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
@@ -11,10 +9,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
-import com.mapbox.maps.Style;
 import com.mapbox.maps.MapView;
+import com.mapbox.maps.Style;
 import com.mapbox.maps.plugin.annotation.AnnotationConfig;
 import com.mapbox.maps.plugin.annotation.AnnotationPlugin;
 import com.mapbox.maps.plugin.annotation.AnnotationPluginImplKt;
@@ -24,26 +21,26 @@ import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions;
 import com.mapbox.maps.plugin.gestures.GesturesPlugin;
 import com.mapbox.maps.plugin.gestures.GesturesUtils;
 import com.mapbox.maps.plugin.gestures.OnMapClickListener;
-import com.sphy.stetic.Db.AppDatabase;
 import com.sphy.stetic.Domain.Shop;
 import com.sphy.stetic.R;
+import com.sphy.stetic.contract.Shops.ShopRegisterContract;
+import com.sphy.stetic.presenter.Shops.ShopRegisterPresenter;
 
+public class RegisterShopView extends AppCompatActivity implements ShopRegisterContract.View, Style.OnStyleLoaded, OnMapClickListener {
 
-
-public class RegisterShopActivity extends AppCompatActivity implements Style.OnStyleLoaded,
-        OnMapClickListener {
-
+    private ShopRegisterPresenter presenter;
 
     private MapView mapView;
     private PointAnnotationManager pointAnnotationManager;
     private GesturesPlugin gesturesPlugin;
     private com.mapbox.geojson.Point currentPoint;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_shop);
+
+        presenter = new ShopRegisterPresenter(this);
 
         mapView = findViewById(R.id.mapView);
         mapView.getMapboxMap().loadStyleUri(Style.MAPBOX_STREETS, this);
@@ -54,30 +51,59 @@ public class RegisterShopActivity extends AppCompatActivity implements Style.OnS
     }
 
     public void createShop(View view) {
+
         EditText etName = findViewById(R.id.shop_name);
         EditText etAddress = findViewById(R.id.shop_address);
         EditText etCity = findViewById(R.id.shop_city);
-        CheckBox checkSolarium = findViewById(R.id.shop_solarium);
+
+        CheckBox cbSolarium = findViewById(R.id.shop_solarium);
+
 
         String name = etName.getText().toString();
         String address = etAddress.getText().toString();
-        String city = etCity.getText().toString();
-        boolean solarium = checkSolarium.isChecked();
+        String city  = etCity.getText().toString();
+        double latitude = currentPoint.latitude();
+        double longitude = currentPoint.longitude();
+        boolean solarium = cbSolarium.isChecked();
 
-        Shop shop = new Shop(name,address,city,solarium,currentPoint.latitude(),currentPoint.longitude());
-        AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
-        db.shopDao().insert(shop);
 
-        Toast.makeText(this, R.string.shop_insert, Toast.LENGTH_LONG).show();
+        Shop shop = new Shop(name, address, city, solarium, latitude, longitude);
+        presenter.insertShop(shop);
+    }
+
+    @Override
+    public void showInsertSuccessMessage() {
+        Toast.makeText(this,"Tienda insertado correctamente", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showInsertErrorMessage() {
+        Toast.makeText(this, "Error al insertar la tienda", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void clearFields() {
+
+
+        EditText etName = findViewById(R.id.product_name);
+        EditText etSize = findViewById(R.id.product_size);
+        EditText etDescription = findViewById(R.id.product_description);
+        EditText etPrice = findViewById(R.id.product_price);
+        CheckBox cbDangerous = findViewById(R.id.product_dangerous);
+
+
 
         etName.setText("");
-        etAddress.setText("");
-        etCity.setText("");
-
+        etSize.setText("");
+        etDescription.setText("");
+        etPrice.setText("");
+        cbDangerous.clearFocus();
 
 
         etName.requestFocus();
     }
+
+
 
     @Override
     public void onStyleLoaded(@NonNull Style style) {
@@ -106,4 +132,7 @@ public class RegisterShopActivity extends AppCompatActivity implements Style.OnS
         addMarker(point.latitude(), point.longitude(), "Here");
         return false;
     }
+
+
+
 }

@@ -1,33 +1,42 @@
 package com.sphy.stetic.contract.Clients;
 
 import com.sphy.stetic.Domain.Client;
+import com.sphy.stetic.Domain.Product;
 
 public interface ClientEditContract {
     interface View {
         void showUpdateSuccessMessage();
-
         void showUpdateErrorMessage();
-
-        void showCancelMessage();
-
-        void clearFields();
+        void displayClientDetails(Client client);
     }
 
     interface Presenter {
-        void updateClient(Client client);
+        void getClientDetails(long id);
 
-        void cancelEditing();
+        void updateClient(long id, Client client);
+
+
     }
 
     interface Model {
-        interface OnUpdateClientListener {
-            void onUpdateClientSuccess();
+        void getClientDetails(long id, OnClientDetailsListener listener);
 
-            void onUpdateClientError(String message);
+
+        interface OnUpdateClientListener {
+            void onUpdateClientSuccess(String successMessage);
+
+            void onUpdateClientError(String errorMessage);
+        }
+        interface OnClientDetailsListener {
+            void onClientDetailsSuccess(Client client);
+            void onClientDetailsError(String errorMessage);
         }
 
-        void updateClient(Client client, OnUpdateClientListener listener);
+
+        void updateClient(long id, Client client, OnUpdateClientListener listener);
+
     }
+
+
+
 }
-
-

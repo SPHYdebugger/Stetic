@@ -11,6 +11,9 @@ import androidx.room.PrimaryKey;
 public class Shop {
 
     @PrimaryKey
+    @NonNull
+    private long id;
+    @ColumnInfo
     private @NonNull String name;
     @ColumnInfo
     private String address;
@@ -26,6 +29,16 @@ public class Shop {
     private double longitude;
 
     public Shop(){}
+
+    public Shop(long id, @NonNull String name, String address, String city, boolean solarium, double latitude, double longitude) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.city = city;
+        this.solarium = solarium;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 
     public Shop(@NonNull String name, String address, String city, boolean solarium, double latitude, double longitude) {
         this.name = name;
@@ -83,5 +96,13 @@ public class Shop {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

@@ -5,70 +5,73 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.time.LocalDate;
-
 @Entity
 public class Client {
 
     @PrimaryKey
-    private @NonNull String firstName;
+    private @NonNull long id;
     @ColumnInfo
-    private String lastName;
+    private @NonNull String firstname;
     @ColumnInfo
-    private String dni;
+    private String lastname;
     @ColumnInfo
-    private String address;
+    private @NonNull String dni;
     @ColumnInfo
     private String city;
-    @ColumnInfo
-    private String birthDay;
-
     @ColumnInfo
     private boolean vip;
 
     public Client(){}
 
-    public Client(@NonNull String firstName, String lastName, String dni, String address, String city, String birthDay, boolean vip) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Client(long id, @NonNull String firstName, String lastName, @NonNull String dni, String city, boolean vip) {
+        this.id = id;
+        this.firstname = firstName;
+        this.lastname = lastName;
         this.dni = dni;
-        this.address = address;
         this.city = city;
-        this.birthDay = birthDay;
         this.vip = vip;
     }
 
+    public Client(@NonNull String firstName, String lastName, @NonNull String dni, String city, boolean vip) {
+        this.firstname = firstName;
+        this.lastname = lastName;
+        this.dni = dni;
+        this.city = city;
+        this.vip = vip;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     @NonNull
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(@NonNull String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(@NonNull String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
+    @NonNull
     public String getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(@NonNull String dni) {
         this.dni = dni;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getCity() {
@@ -77,14 +80,6 @@ public class Client {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getBirthDay() {
-        return birthDay;
-    }
-
-    public void setBirthDay(String birthDay) {
-        this.birthDay = birthDay;
     }
 
     public boolean isVip() {

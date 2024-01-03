@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Shops.ShopListActivity">
+    tools:context=".view.Shops.ShopListView">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/shop_list"
@@ -21,7 +21,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:clickable="true"
-        android:onClick="addTask"
+        android:onClick="addShop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />

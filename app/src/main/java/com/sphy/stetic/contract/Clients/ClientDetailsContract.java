@@ -12,8 +12,8 @@ public interface ClientDetailsContract {
     }
 
     interface Presenter {
-        void getClientDetails(String dni);
-        void updateClient(Client client);
+        void getClientDetails(long clientId);
+
         void deleteClient(String dni);
     }
 
@@ -33,8 +33,8 @@ public interface ClientDetailsContract {
             void onDeleteError(String message);
         }
 
-        void getClientDetails(String dni, OnClientDetailsListener listener);
-        void updateClient(Client client, OnUpdateListener listener);
+        void getClientDetails(long clientId, OnClientDetailsListener listener);
+
         void deleteClient(String dni, OnDeleteListener listener);
     }
 }
