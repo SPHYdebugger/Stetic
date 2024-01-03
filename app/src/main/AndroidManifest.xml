@@ -88,8 +88,9 @@
             android:exported="false" >
 
         </activity>
+
         <activity
-            android:name=".view.Products.ProductEditView"
+            android:name=".view.Products.ProductListFavoritesView"
             android:exported="false" >
 
         </activity>

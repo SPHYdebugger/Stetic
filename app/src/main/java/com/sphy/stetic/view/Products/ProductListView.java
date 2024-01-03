@@ -76,6 +76,12 @@ public class ProductListView extends AppCompatActivity implements ProductListCon
             startActivity(intent);
             return true;
         }
+        if (item.getItemId() == R.id.listFavorite){
+            Intent intent = new Intent(ProductListView.this, ProductListFavoritesView.class);
+            startActivity(intent);
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

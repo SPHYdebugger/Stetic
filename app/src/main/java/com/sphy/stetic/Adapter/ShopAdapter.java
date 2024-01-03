@@ -93,8 +93,10 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
             int currentPosition = getAdapterPosition();
             Shop shop = shops.get(currentPosition);
 
-            AppDatabase db = Room.databaseBuilder(itemView.getContext(), AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
+            /*AppDatabase db = Room.databaseBuilder(itemView.getContext(), AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
             db.shopDao().delete(shop);
+
+             */
 
             shops.remove(currentPosition);
             notifyItemRemoved(currentPosition);
