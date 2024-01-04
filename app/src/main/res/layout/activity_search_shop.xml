@@ -12,7 +12,7 @@
             android:id="@+id/search_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type id, name or dangerous state"
+            android:hint="Type shopID"
             android:inputType="text" />
 
         <Button

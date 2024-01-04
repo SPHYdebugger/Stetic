@@ -23,7 +23,7 @@ public class Product {
     @ColumnInfo
     private String registrationDate;
     @ColumnInfo
-    private boolean dangerous = false;
+    private boolean dangerous;
 
 
 

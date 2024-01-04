@@ -57,7 +57,7 @@ public class SearchProductView extends AppCompatActivity implements ProductSearc
     }
 
     private void performSearch() {
-        String searchName = searchEditText.getText().toString().trim().toLowerCase();
+        String searchName = searchEditText.getText().toString().trim();
         int searchId = 0;
 
 

@@ -27,7 +27,7 @@ public class ProductSearchPresenter implements ProductSearchContract.Presenter {
 
             @Override
             public void onSearchError(String errorMessage) {
-                view.displaySearchError("No se pudo realizar la busqueda");
+                view.displaySearchError("Producto no encontrado");
             }
         });
     }

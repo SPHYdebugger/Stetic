@@ -8,4 +8,11 @@
         android:icon="@android:drawable/ic_menu_search"
         android:title="searchClient"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/listFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/btn_star"
+        android:title="listFavorite"
+        app:showAsAction="always" />
 </menu>

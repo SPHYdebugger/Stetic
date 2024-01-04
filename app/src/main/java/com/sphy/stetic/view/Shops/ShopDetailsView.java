@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.mapbox.geojson.Point;
 import com.mapbox.maps.CameraOptions;
@@ -22,6 +23,9 @@ import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManager;
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManagerKt;
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions;
 import com.mapbox.maps.plugin.gestures.GesturesPlugin;
+import com.sphy.stetic.Db.AppDatabase;
+import com.sphy.stetic.Db.ProductDao;
+import com.sphy.stetic.Domain.Product;
 import com.sphy.stetic.Domain.Shop;
 import com.sphy.stetic.R;
 import com.sphy.stetic.contract.Shops.ShopDetailsContract;
@@ -168,11 +172,11 @@ public class ShopDetailsView extends AppCompatActivity implements ShopDetailsCon
             presenter.deleteShop(id);
             return true;
         }
-        if (item.getItemId() == R.id.favorite) {
 
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
+
+
+
 
 }

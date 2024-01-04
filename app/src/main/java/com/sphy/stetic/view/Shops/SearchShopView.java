@@ -55,20 +55,21 @@ public class SearchShopView extends AppCompatActivity implements ShopSearchContr
     }
 
     private void performSearch() {
-        String searchName = searchEditText.getText().toString().trim().toLowerCase();
+        String searchCity = searchEditText.getText().toString().trim().toLowerCase();
         int searchId = 0;
 
 
         try {
-            searchId = Integer.parseInt(searchName);
-            searchName = "";
+            searchId = Integer.parseInt(searchCity);
+            searchCity = "";
         } catch (NumberFormatException e) {
             searchId = 0;
+            searchCity = searchEditText.getText().toString().trim().toLowerCase();
         }
 
 
 
-        presenter.performSearch(searchId, searchName);
+        presenter.performSearch(searchId, searchCity);
     }
 
 
@@ -81,6 +82,6 @@ public class SearchShopView extends AppCompatActivity implements ShopSearchContr
 
     @Override
     public void displaySearchError(String message) {
-        Toast.makeText(this, "Error de búsqueda: " + message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Error de búsqueda: 5" + message, Toast.LENGTH_SHORT).show();
     }
 }

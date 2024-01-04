@@ -12,7 +12,7 @@ public interface ShopSearchContract {
     }
 
     interface Presenter {
-        void performSearch(int searchId, String searchText);
+        void performSearch(int searchId, String searchCity);
     }
 
     interface Model {

@@ -94,6 +94,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.TaskHolder
         Intent intent = new Intent(itemView.getContext(), ClientDetailsView.class);
         Client client = clients.get(getAdapterPosition());
         intent.putExtra("id", client.getId());
+        intent.putExtra("dni", client.getDni());
         itemView.getContext().startActivity(intent);
         }
 

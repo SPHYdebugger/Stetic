@@ -1,15 +1,21 @@
 package com.sphy.stetic.view.Products;
 
+import static com.sphy.stetic.Db.ConstantsDb.DATABASE_NAME;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
+import com.sphy.stetic.Db.AppDatabase;
+import com.sphy.stetic.Db.ProductDao;
 import com.sphy.stetic.Domain.Product;
 import com.sphy.stetic.R;
 import com.sphy.stetic.contract.Products.ProductDetailsContract;
@@ -28,7 +34,8 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
 
     private ProductDetailsContract.Presenter presenter;
     private long id;
-
+    private Product temporalProduct;
+    private ProductDao productDao;
 
 
     @Override
@@ -67,6 +74,8 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
         tvPrice.setText(String.valueOf(product.getPrice()));
         tvRegisterDate.setText(product.getRegistrationDate());
 
+        temporalProduct = product;
+
     }
 
 
@@ -101,7 +110,29 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
             presenter.deleteProduct(id);
             return true;
         }
+
+        if (item.getItemId() == R.id.favorite) {
+            addProductInDatabase(temporalProduct);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private void addProductInDatabase(Product product) {
+
+        new Thread(() -> {
+
+            AppDatabase db = Room.databaseBuilder(ProductDetailsView.this, AppDatabase.class, DATABASE_NAME).build();
+            db.productDao().insert(product);
+
+
+        }).start();
+        Toast.makeText(this, "Producto añadido a FAVORITOS", Toast.LENGTH_LONG).show();
+    }
+    public void backProducts(View view) {
+        Intent intent = new Intent(this, ProductListView.class);
+        startActivity(intent);
     }
 
 }

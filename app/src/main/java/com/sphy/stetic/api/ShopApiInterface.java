@@ -30,8 +30,8 @@ public interface ShopApiInterface {
     Call<Shop> editShopById(@Path("shopId") long shopId, @Body Shop shop);
 
     @GET("shop")
-    Call<List<Shop>> searchShopsByCity(
-            @Query("city") String searchText
+    Call<List<Shop>> getShopsByCity(
+            @Query("city") String searchCity
     );
 
 

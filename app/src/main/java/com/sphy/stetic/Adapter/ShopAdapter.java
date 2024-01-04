@@ -3,6 +3,7 @@ package com.sphy.stetic.Adapter;
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +15,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.sphy.stetic.Db.AppDatabase;
+import com.sphy.stetic.Domain.Client;
 import com.sphy.stetic.Domain.Shop;
 import com.sphy.stetic.R;
+import com.sphy.stetic.api.ClientApi;
+import com.sphy.stetic.api.ClientApiInterface;
+import com.sphy.stetic.api.ShopApi;
+import com.sphy.stetic.api.ShopApiInterface;
 import com.sphy.stetic.view.Shops.ShopDetailsView;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
 
@@ -71,7 +81,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
 
 
             detailsButton.setOnClickListener(v -> goShopDetails(view));
-            deleteButton.setOnClickListener(v -> deleteShop(view));
+            deleteButton.setOnClickListener(v -> deleteShop());
 
 
         }
@@ -89,16 +99,28 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
 
 
 
-        private void deleteShop(View itemView) {
+        private void deleteShop() {
             int currentPosition = getAdapterPosition();
             Shop shop = shops.get(currentPosition);
 
-            AppDatabase db = Room.databaseBuilder(itemView.getContext(), AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
-            db.shopDao().delete(shop);
+            ShopApiInterface api = ShopApi.buildInstance();
+            Call<Void> deleteShopCall = api.deleteShop(shop.getId());
+            deleteShopCall.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
 
-            shops.remove(currentPosition);
-            notifyItemRemoved(currentPosition);
-            notifyItemRangeChanged(currentPosition, shops.size());
+                    shops.remove(currentPosition);
+                    notifyItemRemoved(currentPosition);
+                    notifyItemRangeChanged(currentPosition, shops.size());
+
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Log.e("deleteShop", "Error al conectar con el servidor: " + t.getMessage());
+
+                }
+            });
         }
     }
 }

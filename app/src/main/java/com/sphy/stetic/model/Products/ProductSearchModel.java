@@ -31,7 +31,7 @@ public class ProductSearchModel implements ProductSearchContract.Model {
                     if (response.isSuccessful()) {
                         listener.onSearchSuccess(response.body());
                     } else {
-                        listener.onSearchError("Error al realizar la búsqueda");
+                        listener.onSearchError("No se encontró el producto");
                     }
                 }
 
@@ -75,7 +75,7 @@ public class ProductSearchModel implements ProductSearchContract.Model {
                     if (response.isSuccessful()) {
                         listener.onSearchSuccess(response.body());
                     } else {
-                        listener.onSearchError("Error al realizar la búsqueda");
+                        listener.onSearchError("Producto no encontrado");
                     }
                 }
 
