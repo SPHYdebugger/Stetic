@@ -16,15 +16,15 @@ import retrofit2.Response;
 public class ShopSearchModel implements ShopSearchContract.Model {
 
     @Override
-    public void performSearch(int searchId, String searchName, OnSearchListener listener) {
+    public void performSearch(int searchId, String searchCity, OnSearchListener listener) {
         ShopApiInterface api = ShopApi.buildInstance();
-        Call<List<Shop>> searchCall;
+        Call<List<Shop>> searchCallShops;
         Call<Shop> searchCallShop;
         List<Shop> shopList = new ArrayList<>();
 
-        if (!searchName.isEmpty() && searchId == 0) {
-            searchCall = api.searchShopsByCity(searchName);
-            searchCall.enqueue(new Callback<List<Shop>>() {
+        if (!searchCity.isEmpty() && searchId == 0) {
+            searchCallShops = api.getShopsByCity(searchCity);
+            searchCallShops.enqueue(new Callback<List<Shop>>() {
                 @Override
                 public void onResponse(Call<List<Shop>> call, Response<List<Shop>> response) {
                     if (response.isSuccessful()) {
@@ -40,7 +40,7 @@ public class ShopSearchModel implements ShopSearchContract.Model {
                 }
 
             });
-        } else if (searchName.isEmpty() && searchId != 0) {
+        } else if (searchCity.isEmpty() && searchId != 0) {
             searchCallShop = api.getShopById(searchId);
             searchCallShop.enqueue(new Callback<Shop>() {
                 @Override
@@ -51,16 +51,16 @@ public class ShopSearchModel implements ShopSearchContract.Model {
                             shopList.add(shop);
                             listener.onSearchSuccess(shopList);
                         } else {
-                            listener.onSearchError("Tienda no encontrado");
+                            listener.onSearchError("Tienda no encontrado 1");
                         }
                     } else {
-                        listener.onSearchError("Error al realizar la búsqueda");
+                        listener.onSearchError("Error al realizar la búsqueda 2");
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Shop> call, Throwable t) {
-                    listener.onSearchError("Error de conexión al realizar la búsqueda");
+                    listener.onSearchError("Error de conexión al realizar la búsqueda 3");
                 }
 
 

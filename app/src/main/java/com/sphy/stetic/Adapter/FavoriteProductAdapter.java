@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +32,7 @@ import retrofit2.Response;
 public class FavoriteProductAdapter extends RecyclerView.Adapter<FavoriteProductAdapter.ProductHolder> {
 
     private List<Product> products;
+
 
     private ProductDao productDao;
     private AppDatabase appDatabase;
@@ -108,12 +110,14 @@ public class FavoriteProductAdapter extends RecyclerView.Adapter<FavoriteProduct
             int currentPosition = getAdapterPosition();
             Product product = products.get(currentPosition);
 
-            //AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
-            //db.productDao().delete(product);
+            AppDatabase db = Room.databaseBuilder(itemView.getContext(), AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
+            db.productDao().delete(product);
 
             products.remove(currentPosition);
             notifyItemRemoved(currentPosition);
             notifyItemRangeChanged(currentPosition, products.size());
+
+
 
             }
 

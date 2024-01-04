@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:onClick="backProducts">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:text="ID"
                 android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/detail_id"
@@ -41,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="Name"
                 android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/detail_name"
@@ -63,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:text="Description"
                 android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/detail_description"
@@ -85,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:text="Price"
                 android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/detail_price"
@@ -108,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:text="Register Data"
                 android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/detail_registerData"
@@ -125,13 +126,12 @@
                 android:background="#000000" />
 
 
-
             <!-- Botones -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnBack"

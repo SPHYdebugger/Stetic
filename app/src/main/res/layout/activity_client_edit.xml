@@ -62,13 +62,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="1dp">
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
 
-            android:layout_marginTop="16dp"
-            android:text="@string/cancel" />
 
         <Button
             android:id="@+id/btnModify"
@@ -79,5 +73,7 @@
             android:text="@string/modify_client" />
 
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

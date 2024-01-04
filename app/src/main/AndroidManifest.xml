@@ -95,6 +95,17 @@
 
         </activity>
 
+        <activity
+            android:name=".view.Shops.SearchShopView"
+            android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".view.Products.ProductEditView"
+            android:exported="false" >
+
+        </activity>
+
 
     </application>
 

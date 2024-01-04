@@ -17,8 +17,8 @@ public class ShopSearchPresenter implements ShopSearchContract.Presenter {
     }
 
     @Override
-    public void performSearch(int searchId, String searchName) {
-        model.performSearch(searchId, searchName, new ShopSearchContract.Model.OnSearchListener() {
+    public void performSearch(int searchId, String searchCity) {
+        model.performSearch(searchId, searchCity, new ShopSearchContract.Model.OnSearchListener() {
             @Override
             public void onSearchSuccess(List<Shop> searchResults) {
                 view.displaySearchResults(searchResults);
@@ -26,7 +26,7 @@ public class ShopSearchPresenter implements ShopSearchContract.Presenter {
 
             @Override
             public void onSearchError(String errorMessage) {
-                view.displaySearchError("No se pudo realizar la busqueda");
+                view.displaySearchError("No se pudo realizar la búsqueda. Mensaje de error: 6" + errorMessage);
             }
         });
     }
