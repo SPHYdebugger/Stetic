@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -108,19 +109,29 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
             deleteShopCall.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.isSuccessful()) {
 
-                    shops.remove(currentPosition);
-                    notifyItemRemoved(currentPosition);
-                    notifyItemRangeChanged(currentPosition, shops.size());
+                        shops.remove(currentPosition);
+                        notifyItemRemoved(currentPosition);
+                        notifyItemRangeChanged(currentPosition, shops.size());
+                    } else {
 
+                        handleApiResponseError(response.code());
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<Void> call, Throwable t) {
                     Log.e("deleteShop", "Error al conectar con el servidor: " + t.getMessage());
-
                 }
             });
         }
+
+        private void handleApiResponseError(int responseCode) {
+            if (responseCode == 500) {
+                Toast.makeText(parentView.getContext(), "No se puede eliminar una tienda si tiene empleados asociados. Por favor elimina antes los empleados", Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 }

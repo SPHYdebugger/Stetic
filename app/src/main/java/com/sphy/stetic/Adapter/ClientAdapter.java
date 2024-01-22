@@ -124,4 +124,8 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.TaskHolder
             });
         }
     }
+
+
+    //esto es una prueba
+    
 }

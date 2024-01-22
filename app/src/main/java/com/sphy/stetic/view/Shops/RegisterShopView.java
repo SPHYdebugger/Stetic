@@ -85,19 +85,17 @@ public class RegisterShopView extends AppCompatActivity implements ShopRegisterC
     public void clearFields() {
 
 
-        EditText etName = findViewById(R.id.product_name);
-        EditText etSize = findViewById(R.id.product_size);
-        EditText etDescription = findViewById(R.id.product_description);
-        EditText etPrice = findViewById(R.id.product_price);
-        CheckBox cbDangerous = findViewById(R.id.product_dangerous);
+        EditText etName = findViewById(R.id.shop_name);
+        EditText etAddress = findViewById(R.id.shop_address);
+        EditText etCity = findViewById(R.id.shop_city);
+        CheckBox cbSolarium = findViewById(R.id.shop_solarium);
 
 
 
         etName.setText("");
-        etSize.setText("");
-        etDescription.setText("");
-        etPrice.setText("");
-        cbDangerous.clearFocus();
+        etAddress.setText("");
+        etCity.setText("");
+        cbSolarium.clearFocus();
 
 
         etName.requestFocus();

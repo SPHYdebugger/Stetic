@@ -17,7 +17,7 @@ public interface ShopApiInterface {
     @GET("shops")
     Call<List<Shop>> getShops();
 
-    @GET("shop/{shopId}")
+    @GET("shops/{shopId}")
     Call<Shop> getShopById(@Path("shopId") long shopId);
 
     @POST("shops")
