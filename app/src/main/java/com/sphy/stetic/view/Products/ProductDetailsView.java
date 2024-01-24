@@ -2,6 +2,8 @@ package com.sphy.stetic.view.Products;
 
 import static com.sphy.stetic.Db.ConstantsDb.DATABASE_NAME;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -107,7 +109,7 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
             return true;
         }
         if (item.getItemId() == R.id.delete) {
-            presenter.deleteProduct(id);
+            confirmDeleteProduct();
             return true;
         }
 
@@ -119,7 +121,7 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
     }
 
 
-    private void addProductInDatabase(Product product) {
+    public void addProductInDatabase(Product product) {
 
         new Thread(() -> {
 
@@ -128,7 +130,33 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
 
 
         }).start();
-        Toast.makeText(this, "Producto añadido a FAVORITOS", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.product_added_favorites, Toast.LENGTH_LONG).show();
+    }
+
+    private void confirmDeleteProduct() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.confirmation);
+        builder.setMessage(R.string.delete_product_alert);
+
+        // Botón confirmar
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                presenter.deleteProduct(id);
+            }
+        });
+
+        // Botón cancelar
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        // Mostrar el aviso
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
     public void backProducts(View view) {
         Intent intent = new Intent(this, ProductListView.class);

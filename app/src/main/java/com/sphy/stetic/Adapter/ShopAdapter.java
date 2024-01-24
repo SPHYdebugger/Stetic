@@ -2,6 +2,8 @@ package com.sphy.stetic.Adapter;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -99,8 +101,37 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
         }
 
 
-
         private void deleteShop() {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(parentView.getContext());
+            builder.setTitle(parentView.getResources().getString(R.string.confirmation));
+            builder.setMessage(parentView.getResources().getString(R.string.delete_shop_alert));
+
+            //Boton confirmar
+            builder.setPositiveButton(parentView.getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    deleteShopComfirmed();
+                }
+            });
+
+            //boton cancelar
+            builder.setNegativeButton(parentView.getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            //Mostrar el aviso
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
+
+
+        private void deleteShopComfirmed() {
+
             int currentPosition = getAdapterPosition();
             Shop shop = shops.get(currentPosition);
 
@@ -129,7 +160,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
 
         private void handleApiResponseError(int responseCode) {
             if (responseCode == 500) {
-                Toast.makeText(parentView.getContext(), "No se puede eliminar una tienda si tiene empleados asociados. Por favor elimina antes los empleados", Toast.LENGTH_SHORT).show();
+                Toast.makeText(parentView.getContext(), parentView.getResources().getString(R.string.undelete_shop_toast), Toast.LENGTH_SHORT).show();
             }
         }
 

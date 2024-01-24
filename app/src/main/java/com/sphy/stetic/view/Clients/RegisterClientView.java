@@ -44,7 +44,7 @@ public class RegisterClientView extends AppCompatActivity implements ClientRegis
 
     @Override
     public void showInsertSuccessMessage() {
-        Toast.makeText(this,"Cliente insertado correctamente", Toast.LENGTH_LONG).show();
+        Toast.makeText(this,R.string.client_successful_added, Toast.LENGTH_LONG).show();
     }
 
     @Override

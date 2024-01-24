@@ -91,7 +91,7 @@ public class ShopEditView extends AppCompatActivity implements ShopEditContract.
     }
     @Override
     public void showUpdateSuccessMessage() {
-        Toast.makeText(this, "Tienda actualizada correctamente", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.shop_successful_modified, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, ShopDetailsView.class);
         intent.putExtra("id", id);
         startActivity(intent);
@@ -100,7 +100,7 @@ public class ShopEditView extends AppCompatActivity implements ShopEditContract.
 
     @Override
     public void showUpdateErrorMessage() {
-        Toast.makeText(this, "Tienda actualizada correctamente", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.shop_successful_modified, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, ShopDetailsView.class);
         intent.putExtra("id", id);
         startActivity(intent);

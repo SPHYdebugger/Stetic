@@ -2,6 +2,8 @@ package com.sphy.stetic.Adapter;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,7 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
     @Override
     public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.product_list_item, parent, false);
+                .inflate(R.layout.product_list_item2, parent, false);
         return new ProductHolder(view);
     }
 
@@ -53,6 +56,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
         holder.tvName.setText(products.get(position).getName());
         holder.tvDescription.setText(products.get(position).getDescription());
         holder.tvPrice.setText(String.valueOf(products.get(position).getPrice()));
+
 
 
 
@@ -88,8 +92,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             detailsButton = view.findViewById(R.id.details_item_button);
 
 
+
             detailsButton.setOnClickListener(v -> goProductDetails(view));
             deleteButton.setOnClickListener(v -> deleteProduct());
+
 
 
         }
@@ -102,9 +108,34 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             itemView.getContext().startActivity(intent);
         }
 
-
-
         private void deleteProduct() {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(parentView.getContext());
+            builder.setTitle(parentView.getResources().getString(R.string.confirmation));
+            builder.setMessage(parentView.getResources().getString(R.string.delete_product_alert));
+
+            //Boton confirmar
+            builder.setPositiveButton(parentView.getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    deleteProductConfirmed();
+                }
+            });
+
+            //boton cancelar
+            builder.setNegativeButton(parentView.getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            //Mostrar el aviso
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
+        private void deleteProductConfirmed() {
             int currentPosition = getAdapterPosition();
             Product product = products.get(currentPosition);
 
@@ -129,5 +160,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
 
 
         }
+
+
     }
 }

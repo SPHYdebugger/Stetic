@@ -2,6 +2,8 @@ package com.sphy.stetic.Adapter;
 
 import static com.sphy.stetic.Util.Constants.DATABASE_NAME;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,7 +44,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.TaskHolder
     @Override
     public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.client_list_item, parent, false);
+                .inflate(R.layout.client_list_item2, parent, false);
         return new TaskHolder(view);
     }
 
@@ -99,8 +101,35 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.TaskHolder
         }
 
 
-
         private void deleteClient() {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(parentView.getContext());
+            builder.setTitle(parentView.getResources().getString(R.string.confirmation));
+            builder.setMessage(parentView.getResources().getString(R.string.delete_client_alert));
+
+            //Boton confirmar
+            builder.setPositiveButton(parentView.getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    deleteClientConfirmed();
+                }
+            });
+
+            //boton cancelar
+            builder.setNegativeButton(parentView.getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            //Mostrar el aviso
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
+
+        private void deleteClientConfirmed() {
             int currentPosition = getAdapterPosition();
             Client client = clients.get(currentPosition);
 

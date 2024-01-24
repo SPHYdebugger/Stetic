@@ -32,7 +32,7 @@
                 android:id="@+id/detail_firstName_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:text="@string/client_name"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -54,7 +54,7 @@
                 android:id="@+id/detail_lastName_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lastname"
+                android:text="@string/client_lastname"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -76,7 +76,7 @@
                 android:id="@+id/detail_dni_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dni"
+                android:text="@string/client_dni"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -99,7 +99,7 @@
                 android:id="@+id/detail_city_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="City"
+                android:text="@string/client_city"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -123,7 +123,7 @@
                 android:id="@+id/detail_vip_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="VIP"
+                android:text="@string/client_vip"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -153,7 +153,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Back" />
+                    android:text="@string/back" />
             </LinearLayout>
 
         </LinearLayout>

@@ -40,7 +40,7 @@
                 android:id="@+id/detail_name_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:text="@string/product_name"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
                 android:id="@+id/detail_description_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Description"
+                android:text="@string/product_description"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -84,7 +84,7 @@
                 android:id="@+id/detail_price_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Price"
+                android:text="@string/product_price"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -107,7 +107,7 @@
                 android:id="@+id/detail_registerDate_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Register Data"
+                android:text="@string/register_data"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -138,7 +138,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Back" />
+                    android:text="@string/back" />
             </LinearLayout>
 
         </LinearLayout>

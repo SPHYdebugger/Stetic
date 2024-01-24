@@ -1,16 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SteticApp</string>
-    <string name="name">Nome</string>
-    <string name="lastname">Apelido</string>
-    <string name="dni">DNI</string>
-    <string name="address">Enderezo</string>
-    <string name="city">Cidade</string>
-    <string name="birthday">Data de cumpreanos</string>
-    <string name="vip">VIP</string>
-    <string name="create">Crear</string>
+
+    <string name="wellcome">Benvido á nosa STETICAPP</string>
+    <string name="explain">Nesta App podes facer operacións con Clientes, Productos e Tiendas</string>
+
+    <string name="create">Crea</string>
     <string name="delete">Borrar</string>
     <string name="details">Detalles</string>
+    <string name="cancel">Cancelar</string>
+    <string name="modify">Modificar</string>
+    <string name="search">Atopar</string>
+    <string name="back">Atrás</string>
 
-    <string name="client_insert">Cliente insertado en la base de datos</string>
+    <string name="confirmation">Confirmación</string>
+    <string name="no">NON</string>
+    <string name="yes">SI</string>
+
+
+    <string name="client_name">Nome</string>
+    <string name="client_lastname">Apelido</string>
+    <string name="client_dni">DNI</string>
+    <string name="client_city">Cidade</string>
+    <string name="client_vip">VIP</string>
+
+    <string name="client_insert">Cliente engadido a base de datos</string>
+    <string name="modify_client">Modificar cliente</string>
+    <string name="search_client">Escribe nome, apelido ou cidade para buscar</string>
+    <string name="delete_client_alert">¿Estás seguro de borrar este cliente?</string>
+
+    <string name="product_name">Nome</string>
+    <string name="product_size">Tamaño</string>
+    <string name="product_description">Descripción</string>
+    <string name="product_price">Prezo</string>
+    <string name="register_data">Data de rexistro</string>
+    <string name="is_dangerous">Perigoso</string>
+
+    <string name="product_insert">Producto engadido á base de datos</string>
+    <string name="modify_product">Modificar producto</string>
+    <string name="search_product">Escribe id, nome ou se é perigoso para á búsqueda</string>
+    <string name="delete_product_alert">¿Estás seguro de borrar este producto?</string>
+
+    <string name="shop_name">Nome</string>
+    <string name="shop_address">Enderezo</string>
+    <string name="shop_city">Cidade</string>
+    <string name="has_solarium">Solarium</string>
+
+    <string name="shop_insert">Tienda engadida á base de datos</string>
+    <string name="modify_shop">Modificar a tienda</string>
+    <string name="search_shop">Escribe o id ou a cidade a buscar</string>
+    <string name="delete_shop_alert">¿Estás seguro de borrar esta tienda?</string>
+    <string name="undelete_shop_toast">Non se pode borrar unha tienda se ten empleados, por favor bórraos antes</string>
+
+    <string name="client_id_text">Id do cliente</string>
+    <string name="client_name_text">Nome do cliente</string>
+    <string name="client_lastname_text">Apelido do cliente</string>
+    <string name="client_dni_text">DNI do cliente</string>
+    <string name="product_id_text">Id do producto</string>
+    <string name="product_name_text">Nome do producto</string>
+    <string name="product_description_text">Descripción do producto</string>
+    <string name="product_price_text">Prezo do producto</string>
+    <string name="shop_name_text">Nome da tienda</string>
+    <string name="shop_address_text">Enderezo</string>
+    <string name="shop_city_text">Cidade</string>
+
+    <string name="product_successful_added">Producto insertado correctamente</string>
+    <string name="product_successful_modified">Producto modificado correctamente</string>
+    <string name="product_added_favorites">Producto engadido a FAVORITOS</string>
+
+    <string name="client_successful_added">Cliente insertado correctamente</string>
+    <string name="client_successful_modified">Cliente modificado correctamente</string>
+
+    <string name="shop_successful_added">Tienda insertado correctamente</string>
+    <string name="shop_successful_modified">Tienda modificado correctamente</string>
+
+
 </resources>

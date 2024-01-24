@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/name"
+            android:hint="@string/client_name"
             android:inputType="text" />
 
         <EditText
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/lastname"
+            android:hint="@string/client_lastname"
             android:inputType="text" />
 
         <EditText
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/dni"
+            android:hint="@string/client_dni"
             android:inputType="text" />
 
 
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/city"
+            android:hint="@string/client_city"
             android:inputType="text" />
 
 
@@ -54,7 +54,7 @@
             android:id="@+id/client_vip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/vip" />
+            android:text="@string/client_vip" />
 
     </LinearLayout>
 

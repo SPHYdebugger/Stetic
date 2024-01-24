@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/edit_name"
             android:layout_marginTop="8dp"
-            android:hint="Name" />
+            android:hint="@string/shop_name" />
 
         <EditText
             android:id="@+id/edit_address"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/edit_address"
             android:layout_marginTop="8dp"
-            android:hint="Address" />
+            android:hint="@string/shop_address" />
 
         <EditText
             android:id="@+id/edit_solarium"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/edit_solarium"
             android:layout_marginTop="8dp"
-            android:hint="Solarium" />
+            android:hint="@string/has_solarium" />
 
         <EditText
             android:id="@+id/edit_latitude"
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="modifyProduct"
-            android:text="modify_product" />
+            android:text="@string/modify_shop" />
 
     </LinearLayout>
 
