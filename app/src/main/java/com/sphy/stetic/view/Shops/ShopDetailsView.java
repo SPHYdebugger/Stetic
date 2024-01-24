@@ -1,5 +1,7 @@
 package com.sphy.stetic.view.Shops;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -162,21 +164,42 @@ public class ShopDetailsView extends AppCompatActivity implements ShopDetailsCon
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.edit){
-            Intent intent = new Intent(ShopDetailsView.this, ShopEditView.class);
-            intent.putExtra("id", id);
-            startActivity(intent);
 
             return true;
         }
         if (item.getItemId() == R.id.delete) {
-            presenter.deleteShop(id);
+            confirmDeleteShop();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void confirmDeleteShop() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.confirmation);
+        builder.setMessage(R.string.delete_shop_alert);
 
+        // Botón confirmar
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                presenter.deleteShop(id);
+            }
+        });
+
+        // Botón cancelar
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        // Mostrar el aviso
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
 
 }

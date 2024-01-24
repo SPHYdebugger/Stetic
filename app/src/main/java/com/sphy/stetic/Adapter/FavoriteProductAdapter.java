@@ -22,6 +22,7 @@ import com.sphy.stetic.R;
 import com.sphy.stetic.api.ProductApi;
 import com.sphy.stetic.api.ProductApiInterface;
 import com.sphy.stetic.view.Products.ProductDetailsView;
+import com.sphy.stetic.view.Products.favoriteProductDetailsView;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class FavoriteProductAdapter extends RecyclerView.Adapter<FavoriteProduct
     @Override
     public FavoriteProductAdapter.ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.product_list_item, parent, false);
+                .inflate(R.layout.product_favoritelist_item, parent, false);
         return new FavoriteProductAdapter.ProductHolder(view);
     }
 
@@ -98,7 +99,7 @@ public class FavoriteProductAdapter extends RecyclerView.Adapter<FavoriteProduct
 
 
         private void goProductDetails(View itemView) {
-            Intent intent = new Intent(itemView.getContext(), ProductDetailsView.class);
+            Intent intent = new Intent(itemView.getContext(), favoriteProductDetailsView.class);
             Product product = products.get(getAdapterPosition());
             intent.putExtra("id", product.getId());
             itemView.getContext().startActivity(intent);

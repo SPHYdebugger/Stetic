@@ -31,7 +31,7 @@ public class ProductListFavoritesView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_list);
+        setContentView(R.layout.activity_product_favoritelist);
 
         products = new ArrayList<>();
 
@@ -60,7 +60,7 @@ public class ProductListFavoritesView extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.action_bar, menu);
+        
         return true;
     }
 

@@ -29,9 +29,9 @@ public interface ShopApiInterface {
     @PUT("shop/{shopId}")
     Call<Shop> editShopById(@Path("shopId") long shopId, @Body Shop shop);
 
-    @GET("shop")
+    @GET("shops")
     Call<List<Shop>> getShopsByCity(
-            @Query("city") String searchCity
+        @Query("city") String searchCity
     );
 
 

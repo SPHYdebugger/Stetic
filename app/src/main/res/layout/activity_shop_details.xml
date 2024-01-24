@@ -39,7 +39,7 @@
                 android:id="@+id/detail_name_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/name"
+                android:text="@string/shop_name"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -61,7 +61,7 @@
                 android:id="@+id/detail_address_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/address"
+                android:text="@string/shop_address"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -83,7 +83,7 @@
                 android:id="@+id/detail_city_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/city"
+                android:text="@string/shop_city"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -106,7 +106,7 @@
                 android:id="@+id/detail_solarium_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Solarium"
+                android:text="@string/has_solarium"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -146,7 +146,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Back" />
+                    android:text="@string/back" />
             </LinearLayout>
 
         </LinearLayout>

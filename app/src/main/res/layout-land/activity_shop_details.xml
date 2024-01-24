@@ -1,16 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:onClick="backProducts">
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="402dp"
+        android:layout_height="328dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.mapbox.maps.MapView
+            android:id="@+id/mapViewShopDetails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
     <ScrollView
-        android:layout_width="match_parent"
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:padding="20dp">
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintStart_toStartOf="parent">
+
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -19,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ID"
+                android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -26,6 +49,7 @@
                 android:id="@+id/detail_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:text=""
                 android:textSize="18sp" />
 
@@ -40,7 +64,8 @@
                 android:id="@+id/detail_name_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/product_name"
+                android:textAlignment="center"
+                android:text="@string/shop_name"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -48,6 +73,7 @@
                 android:id="@+id/detail_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:text=""
                 android:textSize="18sp" />
 
@@ -59,17 +85,19 @@
                 android:background="#000000" />
 
             <TextView
-                android:id="@+id/detail_description_label"
+                android:id="@+id/detail_address_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/product_description"
+                android:textAlignment="center"
+                android:text="@string/shop_address"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/detail_description"
+                android:id="@+id/detail_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:text=""
                 android:textSize="18sp" />
 
@@ -81,17 +109,19 @@
                 android:background="#000000" />
 
             <TextView
-                android:id="@+id/detail_price_label"
+                android:id="@+id/detail_city_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/product_price"
+                android:textAlignment="center"
+                android:text="@string/shop_city"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/detail_price"
+                android:id="@+id/detail_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:text=""
                 android:textSize="18sp" />
 
@@ -104,17 +134,19 @@
 
 
             <TextView
-                android:id="@+id/detail_registerDate_label"
+                android:id="@+id/detail_solarium_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/register_data"
+                android:textAlignment="center"
+                android:text="@string/has_solarium"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/detail_registerData"
+                android:id="@+id/detail_solarium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:text=""
                 android:textSize="18sp" />
 
@@ -125,22 +157,10 @@
                 android:layout_marginBottom="5dp"
                 android:background="#000000" />
 
-
-            <!-- Botones -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnBack"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/back" />
-            </LinearLayout>
 
         </LinearLayout>
+
+
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,13 +18,13 @@
             android:id="@+id/edit_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="id" />
+            android:hint="Id" />
 
         <EditText
             android:id="@+id/edit_firstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="First Name" />
+            android:hint="@string/client_name" />
 
         <EditText
             android:id="@+id/edit_lastName"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/edit_firstName"
             android:layout_marginTop="8dp"
-            android:hint="Last Name" />
+            android:hint="@string/client_lastname" />
 
         <EditText
             android:id="@+id/edit_dni"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/edit_lastName"
             android:layout_marginTop="8dp"
-            android:hint="DNI" />
+            android:hint="@string/client_dni" />
 
 
         <EditText
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/edit_dni"
             android:layout_marginTop="8dp"
-            android:hint="City" />
+            android:hint="@string/client_city" />
 
 
 

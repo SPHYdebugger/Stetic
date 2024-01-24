@@ -105,6 +105,12 @@
             android:exported="false" >
 
         </activity>
+        <activity
+            android:name=".view.Products.favoriteProductDetailsView"
+            android:exported="false" >
+
+        </activity>
+
 
 
     </application>

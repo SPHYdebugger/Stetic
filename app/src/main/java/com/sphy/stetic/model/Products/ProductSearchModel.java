@@ -16,6 +16,7 @@ import retrofit2.Response;
 
 public class ProductSearchModel implements ProductSearchContract.Model {
 
+
     @Override
     public void performSearch(int searchId, String searchName, OnSearchListener listener) {
         ProductApiInterface api = ProductApi.buildInstance();
@@ -23,7 +24,7 @@ public class ProductSearchModel implements ProductSearchContract.Model {
         Call<Product> searchCallProduct;
         List<Product> productList = new ArrayList<>();
 
-        if (!searchName.isEmpty() && searchId == 0) {
+        if (!searchName.isEmpty() && searchId == 0 && !searchName.equals("true") && !searchName.equals("false")) {
             searchCall = api.searchProductsByName(searchName);
             searchCall.enqueue(new Callback<List<Product>>() {
                 @Override
@@ -63,7 +64,6 @@ public class ProductSearchModel implements ProductSearchContract.Model {
                 public void onFailure(Call<Product> call, Throwable t) {
                     listener.onSearchError("Error de conexión al realizar la búsqueda");
                 }
-
 
             });
         }

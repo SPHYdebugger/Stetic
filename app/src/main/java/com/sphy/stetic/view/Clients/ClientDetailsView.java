@@ -1,5 +1,7 @@
 package com.sphy.stetic.view.Clients;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -74,13 +76,13 @@ public class ClientDetailsView extends AppCompatActivity implements ClientDetail
         tvCity.setText(client.getCity());
 
         isVip = client.isVip();
-        tvVip.setText(isVip ? "Sí" : "No");
+        tvVip.setText(isVip ? R.string.yes : R.string.no);
 
     }
 
     @Override
     public void showUpdateSuccessMessage() {
-        Toast.makeText(this, "Cliente actualizado correctamente", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.client_successful_modified, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -115,10 +117,36 @@ public class ClientDetailsView extends AppCompatActivity implements ClientDetail
             return true;
         }
         if (item.getItemId() == R.id.delete) {
-            presenter.deleteClient(dni);
+            confirmDeleteClient();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void confirmDeleteClient() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.confirmation));
+        builder.setMessage(getString(R.string.delete_client_alert));
+
+        // Botón confirmar
+        builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                presenter.deleteClient(dni);
+            }
+        });
+
+        // Botón cancelar
+        builder.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        // Mostrar el aviso
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 }

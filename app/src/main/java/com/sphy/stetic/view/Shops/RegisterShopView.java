@@ -73,7 +73,7 @@ public class RegisterShopView extends AppCompatActivity implements ShopRegisterC
 
     @Override
     public void showInsertSuccessMessage() {
-        Toast.makeText(this,"Tienda insertado correctamente", Toast.LENGTH_LONG).show();
+        Toast.makeText(this,R.string.shop_successful_added, Toast.LENGTH_LONG).show();
     }
 
     @Override

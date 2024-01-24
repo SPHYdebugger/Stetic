@@ -82,7 +82,7 @@ public class ClientEditView extends AppCompatActivity implements ClientEditContr
     }
     @Override
     public void showUpdateSuccessMessage() {
-        Toast.makeText(this, "Cliente actualizado correctamente", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.client_successful_modified, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, ClientDetailsView.class);
         intent.putExtra("id", id);
         startActivity(intent);
@@ -91,7 +91,7 @@ public class ClientEditView extends AppCompatActivity implements ClientEditContr
 
     @Override
     public void showUpdateErrorMessage() {
-        Toast.makeText(this, "Cliente actualizado correctamente", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.client_successful_modified, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, ClientDetailsView.class);
         intent.putExtra("id", id);
         startActivity(intent);

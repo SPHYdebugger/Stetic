@@ -52,7 +52,7 @@ public class RegisterProductView extends AppCompatActivity implements ProductReg
 
     @Override
     public void showInsertSuccessMessage() {
-        Toast.makeText(this,"Producto insertado correctamente", Toast.LENGTH_LONG).show();
+        Toast.makeText(this,R.string.product_successful_added, Toast.LENGTH_LONG).show();
     }
 
     @Override

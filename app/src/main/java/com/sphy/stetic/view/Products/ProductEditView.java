@@ -79,7 +79,7 @@ public class ProductEditView extends AppCompatActivity implements ProductEditCon
     }
     @Override
     public void showUpdateSuccessMessage() {
-        Toast.makeText(this, "Producto actualizado correctamente", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.product_successful_modified, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, ProductDetailsView.class);
         intent.putExtra("id", id);
         startActivity(intent);
@@ -88,7 +88,7 @@ public class ProductEditView extends AppCompatActivity implements ProductEditCon
 
     @Override
     public void showUpdateErrorMessage() {
-        Toast.makeText(this, "Producto actualizado correctamente", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.product_successful_modified, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, ProductDetailsView.class);
         intent.putExtra("id", id);
         startActivity(intent);

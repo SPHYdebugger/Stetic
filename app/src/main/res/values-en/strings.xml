@@ -1,16 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">SteticApp</string>
-    <string name="name">Name</string>
-    <string name="lastname">Lastname</string>
-    <string name="dni">NIE</string>
-    <string name="address">Address</string>
-    <string name="city">City</string>
-    <string name="birthday">Birthday Date</string>
-    <string name="vip">VIP</string>
+
+    <string name="wellcome">Wellcome to our STETICAPP</string>
+    <string name="explain">In this app you can make operations with Clients, Products and Shops.</string>
+
     <string name="create">Create</string>
     <string name="delete">Delete</string>
     <string name="details">Details</string>
+    <string name="cancel">Cancel</string>
+    <string name="modify">Modify</string>
+    <string name="search">Search</string>
+    <string name="back">Back</string>
 
-    <string name="client_insert">Cliente insertado en la base de datos</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="no">NO</string>
+    <string name="yes">YES</string>
+
+
+    <string name="client_name">Name</string>
+    <string name="client_lastname">Lastname</string>
+    <string name="client_dni">NIE</string>
+    <string name="client_city">City</string>
+    <string name="client_vip">VIP</string>
+
+    <string name="client_insert">Client inserted in database</string>
+    <string name="modify_client">Modify client</string>
+    <string name="search_client">Type name, lastname or city to search</string>
+    <string name="delete_client_alert">Are you sure to delete this client?</string>
+
+    <string name="product_name">Name</string>
+    <string name="product_size">Size</string>
+    <string name="product_description">Description</string>
+    <string name="product_price">Price</string>
+    <string name="register_data">Register Data</string>
+    <string name="is_dangerous">Dangerous</string>
+
+    <string name="product_insert">Product inserted in database</string>
+    <string name="modify_product">Modify product</string>
+    <string name="search_product">Type id, name or dangerous state to search</string>
+    <string name="delete_product_alert">Are you sure to delete this product?</string>
+
+    <string name="shop_name">Name</string>
+    <string name="shop_address">Address</string>
+    <string name="shop_city">City</string>
+    <string name="has_solarium">Solarium</string>
+
+    <string name="shop_insert">Shop inserted in database</string>
+    <string name="modify_shop">Modify shop</string>
+    <string name="search_shop">Type id, city to search</string>
+    <string name="delete_shop_alert">Are you sure to delete this shop?</string>
+    <string name="undelete_shop_toast">You can not delete a shop if it has a empoyees, please delete employees before</string>
+
+    <string name="client_id_text">Id client</string>
+    <string name="client_name_text">Client name</string>
+    <string name="client_lastname_text">client lastname</string>
+    <string name="client_dni_text">Client NIE</string>
+    <string name="product_id_text">Id product</string>
+    <string name="product_name_text">Product name</string>
+    <string name="product_description_text">Product description</string>
+    <string name="product_price_text">Product price</string>
+    <string name="shop_name_text">Shop name</string>
+    <string name="shop_address_text">Address</string>
+    <string name="shop_city_text">City</string>
+
+    <string name="product_successful_added">Product successful added</string>
+    <string name="product_successful_modified">Product successful modified</string>
+    <string name="product_added_favorites">Product added to favorites</string>
+
+    <string name="client_successful_added">Client successful added</string>
+    <string name="client_successful_modified">Client successful modified</string>
+
+    <string name="shop_successful_added">Shop successful added</string>
+    <string name="shop_successful_modified">Shop successful modified</string>
+
 </resources>

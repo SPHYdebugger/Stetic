@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+
+
+    <!-- Columna izquierda -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="232dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_id"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="50dp"
+            android:text="@string/client_id_text" />
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="50dp"
+            android:text="@string/client_name_text" />
+
+        <TextView
+            android:id="@+id/text_lastname"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="50dp"
+            android:text="@string/client_lastname_text" />
+
+        <TextView
+            android:id="@+id/text_dni"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="50dp"
+            android:text="@string/client_dni_text" />
+
+        <Button
+            android:id="@+id/delete_item_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/delete" />
+
+    </LinearLayout>
+
+    <!-- Columna derecha -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="232dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/client_item_id"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/client_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/client_item_lastname"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/client_item_dni"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/details_item_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/details" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

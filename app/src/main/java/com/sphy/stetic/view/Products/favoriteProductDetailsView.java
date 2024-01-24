@@ -2,8 +2,6 @@ package com.sphy.stetic.view.Products;
 
 import static com.sphy.stetic.Db.ConstantsDb.DATABASE_NAME;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,7 +21,7 @@ import com.sphy.stetic.R;
 import com.sphy.stetic.contract.Products.ProductDetailsContract;
 import com.sphy.stetic.presenter.Products.ProductDetailsPresenter;
 
-public class ProductDetailsView extends AppCompatActivity implements ProductDetailsContract.View {
+public class favoriteProductDetailsView extends AppCompatActivity implements ProductDetailsContract.View {
 
     private TextView tvId;
     private TextView tvName;
@@ -102,62 +100,26 @@ public class ProductDetailsView extends AppCompatActivity implements ProductDeta
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.edit){
-            Intent intent = new Intent(ProductDetailsView.this, ProductEditView.class);
+            Intent intent = new Intent(favoriteProductDetailsView.this, ProductEditView.class);
             intent.putExtra("id", id);
             startActivity(intent);
 
             return true;
         }
         if (item.getItemId() == R.id.delete) {
-            confirmDeleteProduct();
+
             return true;
         }
 
         if (item.getItemId() == R.id.favorite) {
-            addProductInDatabase(temporalProduct);
+
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
 
-    public void addProductInDatabase(Product product) {
 
-        new Thread(() -> {
-
-            AppDatabase db = Room.databaseBuilder(ProductDetailsView.this, AppDatabase.class, DATABASE_NAME).build();
-            db.productDao().insert(product);
-
-
-        }).start();
-        Toast.makeText(this, R.string.product_added_favorites, Toast.LENGTH_LONG).show();
-    }
-
-    private void confirmDeleteProduct() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.confirmation);
-        builder.setMessage(R.string.delete_product_alert);
-
-        // Botón confirmar
-        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                presenter.deleteProduct(id);
-            }
-        });
-
-        // Botón cancelar
-        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        // Mostrar el aviso
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
     public void backProducts(View view) {
         Intent intent = new Intent(this, ProductListView.class);
         startActivity(intent);
